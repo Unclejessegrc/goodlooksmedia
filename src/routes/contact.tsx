@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { CheckCircle2, Instagram, Mail, MessageSquare, Phone, Youtube } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -103,11 +103,32 @@ function presetFromSearch(search: ContactSearch) {
 
 function ContactPage() {
   const search = Route.useSearch();
-  const searchPreset = presetFromSearch(search);
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [preset, setPreset] = useState<{ projectType?: string; pkg?: string; utm: Record<string, string> }>(
-    searchPreset,
+  const {
+    service,
+    projectType,
+    package: packageName,
+    utm_campaign: utmCampaign,
+    utm_medium: utmMedium,
+    utm_source: utmSource,
+  } = search;
+  const searchPreset = useMemo(
+    () =>
+      presetFromSearch({
+        service,
+        projectType,
+        package: packageName,
+        utm_campaign: utmCampaign,
+        utm_medium: utmMedium,
+        utm_source: utmSource,
+      }),
+    [packageName, projectType, service, utmCampaign, utmMedium, utmSource],
   );
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [preset, setPreset] = useState<{
+    projectType?: string;
+    pkg?: string;
+    utm: Record<string, string>;
+  }>(searchPreset);
   const [projectTypeValue, setProjectTypeValue] = useState(() => {
     return normalizeProjectType(searchPreset.projectType) ?? "";
   });
@@ -115,14 +136,7 @@ function ContactPage() {
   useEffect(() => {
     setPreset(searchPreset);
     setProjectTypeValue(normalizeProjectType(searchPreset.projectType) ?? "");
-  }, [
-    search.package,
-    search.projectType,
-    search.service,
-    search.utm_campaign,
-    search.utm_medium,
-    search.utm_source,
-  ]);
+  }, [searchPreset]);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -151,18 +165,12 @@ function ContactPage() {
       const projectType = formData.get("project_type")?.toString();
       const serviceLane = serviceLaneFromProject(projectType);
 
-      trackEvent("quote_form_submit", {
+      trackEvent("contact_form_submit", {
+        form_name: "good-looks-inquiry",
         service_lane: serviceLane,
         package_name: formData.get("package_name")?.toString(),
-        page_path: window.location.pathname,
+        project_type: projectType,
       });
-      if (projectType === "Editing Only") {
-        trackEvent("generate_lead", {
-          service_lane: "editing",
-          package_name: formData.get("package_name")?.toString(),
-          page_path: window.location.pathname,
-        });
-      }
       setStatus("success");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
@@ -179,8 +187,8 @@ function ContactPage() {
             <CheckCircle2 className="w-16 h-16 text-primary mx-auto mb-6" />
             <h1 className="font-display text-4xl md:text-5xl uppercase">Thanks.</h1>
             <p className="mt-4 text-muted-foreground text-lg">
-              Thanks. We got your request. Good Looks will review the details and get back to you
-              as soon as possible.
+              Thanks. We got your request. Good Looks will review the details and get back to you as
+              soon as possible.
             </p>
             <div className="mt-8 flex justify-center gap-3 flex-wrap">
               <a
@@ -306,7 +314,12 @@ function ContactPage() {
               <input type="hidden" name="inquiry_source" value="website_quote_form" readOnly />
               <input type="hidden" name="utm_source" value={preset.utm.utm_source ?? ""} readOnly />
               <input type="hidden" name="utm_medium" value={preset.utm.utm_medium ?? ""} readOnly />
-              <input type="hidden" name="utm_campaign" value={preset.utm.utm_campaign ?? ""} readOnly />
+              <input
+                type="hidden"
+                name="utm_campaign"
+                value={preset.utm.utm_campaign ?? ""}
+                readOnly
+              />
               <p style={{ display: "none" }}>
                 <label>
                   Do not fill this out:
@@ -348,9 +361,7 @@ function ContactPage() {
                 <Field label="Email or phone" name="email_or_phone" required />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Tell us about your project
-                </label>
+                <label className="block text-sm font-medium mb-2">Tell us about your project</label>
                 <textarea
                   name="project_details"
                   rows={5}
@@ -374,7 +385,11 @@ function ContactPage() {
                   <Field label="Desired deadline" name="desired_deadline" />
                 </div>
                 <div className="grid md:grid-cols-3 gap-5">
-                  <Select label="Do you need captions?" name="needs_captions" options={YES_NO_MAYBE} />
+                  <Select
+                    label="Do you need captions?"
+                    name="needs_captions"
+                    options={YES_NO_MAYBE}
+                  />
                   <Select label="Do you need music?" name="needs_music" options={YES_NO_MAYBE} />
                   <Select
                     label="Do you need color correction?"
@@ -382,10 +397,7 @@ function ContactPage() {
                     options={YES_NO_MAYBE}
                   />
                 </div>
-                <Field
-                  label="Paste Google Drive / Dropbox / WeTransfer link"
-                  name="footage_link"
-                />
+                <Field label="Paste Google Drive / Dropbox / WeTransfer link" name="footage_link" />
               </div>
               <button
                 type="submit"

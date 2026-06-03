@@ -33,6 +33,9 @@ export function PortfolioCard({ item }: { item: PortfolioItem }) {
           aria-label={hasVideo ? `Play ${item.title}` : item.title}
           className="absolute inset-0 flex flex-col justify-end p-5 text-left"
           data-track-event={hasVideo ? "portfolio_video_play" : undefined}
+          data-video-title={item.title}
+          data-video-id={item.youtubeId}
+          data-portfolio-category={item.category}
         >
           <div className="absolute top-4 right-4 timecode bg-black/60 px-2 py-1 rounded">
             {item.category}

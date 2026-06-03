@@ -199,12 +199,24 @@ function RootComponent() {
     const onClick = (event: MouseEvent) => {
       const target = event.target as Element | null;
       const tracked = target?.closest<HTMLElement>("[data-track-event]");
-      if (!tracked) return;
+      const link = target?.closest<HTMLAnchorElement>("a[href]");
+      const linkUrl = link?.getAttribute("href");
+      const contactEvent = getContactLinkEvent(linkUrl);
+      const source = tracked ?? link;
+      const eventName =
+        contactEvent ??
+        normalizeTrackedEvent(tracked?.dataset.trackEvent, source, linkUrl) ??
+        getLinkIntentEvent(linkUrl, source);
+      if (!eventName) return;
 
-      trackEvent(tracked.dataset.trackEvent ?? "cta_click", {
-        service_lane: tracked.dataset.serviceLane,
-        package_name: tracked.dataset.packageName,
-        page_path: window.location.pathname,
+      trackEvent(eventName, {
+        button_text: getElementText(source),
+        link_url: link?.href,
+        service_lane: source?.dataset.serviceLane,
+        package_name: source?.dataset.packageName,
+        video_title: source?.dataset.videoTitle,
+        video_id: source?.dataset.videoId,
+        portfolio_category: source?.dataset.portfolioCategory,
       });
     };
 
@@ -217,4 +229,65 @@ function RootComponent() {
       <Outlet />
     </QueryClientProvider>
   );
+}
+
+function getContactLinkEvent(linkUrl?: string | null) {
+  if (!linkUrl) return undefined;
+  const normalizedUrl = linkUrl.trim().toLowerCase();
+  if (normalizedUrl.startsWith("tel:")) return "phone_click";
+  if (normalizedUrl.startsWith("mailto:")) return "email_click";
+  return undefined;
+}
+
+function normalizeTrackedEvent(
+  eventName?: string,
+  element?: HTMLElement | null,
+  linkUrl?: string | null,
+) {
+  if (!eventName) return undefined;
+  if (eventName === "click_editing_quote") return "quote_cta_click";
+  if (eventName === "click_editing_packages_box") return "package_button_click";
+  if (eventName === "quote_cta_click" && isPackageLink(linkUrl, element)) {
+    return "package_button_click";
+  }
+  return eventName;
+}
+
+function getLinkIntentEvent(linkUrl?: string | null, element?: HTMLElement | null) {
+  if (isPackageLink(linkUrl, element)) return "package_button_click";
+  if (isQuoteLink(linkUrl, element)) return "quote_cta_click";
+  return undefined;
+}
+
+function isPackageLink(linkUrl?: string | null, element?: HTMLElement | null) {
+  if (!linkUrl) return false;
+  const normalizedUrl = linkUrl.trim().toLowerCase();
+  const text = getElementText(element)?.toLowerCase() ?? "";
+  const looksLikePackageButton =
+    text.includes("view") ||
+    text.includes("see") ||
+    text.includes("match") ||
+    text.includes("package");
+
+  return (
+    looksLikePackageButton &&
+    text !== "packages" &&
+    (normalizedUrl.includes("/packages") || normalizedUrl.includes("/editing"))
+  );
+}
+
+function isQuoteLink(linkUrl?: string | null, element?: HTMLElement | null) {
+  if (!linkUrl) return false;
+  const normalizedUrl = linkUrl.trim().toLowerCase();
+  const text = getElementText(element)?.toLowerCase() ?? "";
+  if (!normalizedUrl.startsWith("/contact") && !normalizedUrl.includes("/contact?")) return false;
+  if (text === "contact") return false;
+
+  return /quote|request|availability|project|filmed|edited|need/.test(text);
+}
+
+function getElementText(element?: HTMLElement | null) {
+  const label = element?.getAttribute("aria-label") || element?.textContent || "";
+  const normalizedLabel = label.replace(/\s+/g, " ").trim();
+  return normalizedLabel || undefined;
 }
