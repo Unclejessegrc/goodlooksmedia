@@ -4,13 +4,11 @@ import { Menu, X, Phone } from "lucide-react";
 import { CONTACT } from "@/data/contact";
 
 const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/business-video", label: "Business Video" },
+  { to: "/business-video", label: "B2B" },
   { to: "/real-estate-media", label: "Real Estate" },
-  { to: "/weddings", label: "Weddings & Events" },
+  { to: "/weddings", label: "Weddings" },
   { to: "/music-videos", label: "Artist Visuals" },
   { to: "/packages", label: "Pricing" },
-  { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -31,20 +29,20 @@ export function Header() {
         scrolled ? "bg-background/85 backdrop-blur border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center justify-between gap-4">
+        <Link to="/" className="flex shrink-0 items-center gap-2 group">
           <span className="inline-block w-2 h-2 rounded-full bg-primary red-glow group-hover:scale-110 transition" />
           <span className="font-display text-lg md:text-xl tracking-wider">
             GOOD LOOKS<span className="text-primary">.</span>
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav className="hidden lg:flex min-w-0 flex-1 items-center justify-center gap-4 xl:gap-6">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-xs uppercase tracking-wider text-muted-foreground transition hover:text-foreground"
+              className="whitespace-nowrap text-[11px] uppercase tracking-wider text-muted-foreground transition hover:text-foreground"
               activeProps={{ className: "text-primary" }}
             >
               {n.label}
@@ -52,17 +50,17 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-5 xl:gap-6">
+        <div className="hidden lg:flex shrink-0 items-center gap-3 xl:gap-5">
           <a
             href={CONTACT.telHref}
-            className="text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground flex items-center gap-2 transition"
+            className="text-[11px] uppercase tracking-wider text-muted-foreground hover:text-foreground flex items-center gap-2 transition"
             data-track-event="click_call"
           >
             <Phone className="w-4 h-4" /> Call
           </a>
           <Link
             to="/contact"
-            className="inline-flex items-center bg-primary text-primary-foreground px-4 py-2 rounded-md text-xs font-medium uppercase tracking-wider hover:opacity-90 red-glow"
+            className="inline-flex items-center bg-primary text-primary-foreground px-3 xl:px-4 py-2 rounded-md text-[11px] font-medium uppercase tracking-wider hover:opacity-90 red-glow"
             data-track-event="cta_click_quote"
             data-service-lane="general"
           >
@@ -80,7 +78,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background/95 backdrop-blur border-t border-border">
+        <div className="lg:hidden bg-background/95 backdrop-blur border-t border-border max-h-[calc(100vh-3.5rem)] overflow-y-auto">
           <nav className="flex flex-col p-4 gap-1">
             {NAV.map((n) => (
               <Link

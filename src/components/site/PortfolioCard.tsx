@@ -6,7 +6,6 @@ export function PortfolioCard({ item }: { item: PortfolioItem }) {
   const [open, setOpen] = useState(false);
   const hasVideo = Boolean(item.youtubeId || item.embedUrl || item.autoplayEmbedUrl);
   const embedSrc = getAutoplayEmbedSrc(item);
-  const ctaLabel = item.ctaLabel ?? "Watch case study";
 
   return (
     <>
@@ -21,7 +20,7 @@ export function PortfolioCard({ item }: { item: PortfolioItem }) {
               height={720}
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/15" />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition" />
           </>
         ) : (
           <div
@@ -33,31 +32,14 @@ export function PortfolioCard({ item }: { item: PortfolioItem }) {
           type="button"
           onClick={() => hasVideo && setOpen(true)}
           aria-label={hasVideo ? `Play ${item.title}` : item.title}
-          className="absolute inset-0 flex flex-col justify-end p-5 text-left"
+          className="absolute inset-0 flex items-center justify-center"
           data-track-event={hasVideo ? "portfolio_video_play" : undefined}
         >
-          <div className="absolute top-4 right-4 timecode bg-black/60 px-2 py-1 rounded">
-            {item.projectType}
-          </div>
           {hasVideo && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="w-14 h-14 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center group-hover:scale-110 transition red-glow">
-                <Play className="w-6 h-6 ml-0.5 fill-current" />
-              </span>
-            </div>
-          )}
-          <div className="relative rounded-xl bg-black/30 p-3 backdrop-blur-sm">
-            <h3 className="font-display text-lg sm:text-xl md:text-2xl uppercase leading-none">
-              {item.title}
-            </h3>
-            <p className="text-sm text-zinc-300/90 mt-1">Goal: {item.goal}</p>
-            <p className="text-xs text-zinc-300/80 mt-2">Deliverables: {item.deliverables}</p>
-            <p className="text-xs text-zinc-300/80 mt-1">Best use: {item.bestUse}</p>
-            <span className="mt-3 inline-flex flex-wrap gap-x-4 gap-y-1 text-xs uppercase text-primary">
-              <span>{ctaLabel}</span>
-              {!item.ctaLabel && <span>Request a Quote</span>}
+            <span className="w-14 h-14 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center group-hover:scale-110 transition red-glow">
+              <Play className="w-6 h-6 ml-0.5 fill-current" />
             </span>
-          </div>
+          )}
         </button>
       </div>
 

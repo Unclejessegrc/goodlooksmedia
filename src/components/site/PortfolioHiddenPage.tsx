@@ -12,7 +12,7 @@ export function PortfolioHiddenPage() {
             Our full portfolio is being <span className="text-primary">curated.</span>
           </h1>
           <p className="mt-6 text-muted-foreground text-lg max-w-3xl leading-relaxed">
-            We are updating this section with approved case-study style examples that better match
+            We are updating this section with approved portfolio samples that better match
             the current service lanes. In the meantime, you can watch the director reel, compare
             pricing, or request a project quote.
           </p>
