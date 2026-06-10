@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Briefcase, Check, Clapperboard, Heart, Home, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  Check,
+  Clapperboard,
+  Heart,
+  Home,
+  PartyPopper,
+  Sparkles,
+} from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { PortfolioCard } from "@/components/site/PortfolioCard";
@@ -26,14 +35,14 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Strategic Rhode Island video production for business video, real estate media, wedding films, event coverage, and artist visuals. Built for websites, social media, ads, and long-term brand visibility.",
+          "Strategic Rhode Island video production for business video, real estate media, weddings, events, and artist visuals. Built for websites, social media, ads, and long-term brand visibility.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Good Looks Media Group | Rhode Island Video Production" },
       {
         property: "og:description",
         content:
-          "Strategic Rhode Island video production for business video, real estate media, wedding films, event coverage, and artist visuals.",
+          "Strategic Rhode Island video production for business video, real estate media, weddings, events, and artist visuals.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: absoluteUrl("/") },
@@ -41,7 +50,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "Strategic Rhode Island video production for business video, real estate media, wedding films, event coverage, and artist visuals.",
+          "Strategic Rhode Island video production for business video, real estate media, weddings, events, and artist visuals.",
       },
     ],
     links: [
@@ -59,7 +68,7 @@ export const Route = createFileRoute("/")({
             pageJsonLd({
               name: "Good Looks Media Group Rhode Island Video Production",
               description:
-                "Strategic video production for Rhode Island brands, real estate, wedding films, event coverage, and artists.",
+                "Strategic video production for Rhode Island brands, real estate, weddings, events, and artists.",
               path: "/",
             }),
             videoObjectJsonLd({
@@ -81,12 +90,21 @@ export const Route = createFileRoute("/")({
 const SERVICE_CARDS = [
   {
     icon: Briefcase,
-    title: "Business & Brand Video",
+    title: "B2B Commercial",
     copy:
       "Story-driven videos for local businesses, nonprofits, and brands that need to explain what they do, build trust, and create content for websites, ads, and social media.",
     to: "/business-video",
-    cta: "Explore Business Video",
+    cta: "View Business Video Packages",
     lane: "business",
+  },
+  {
+    icon: PartyPopper,
+    title: "Events & Music Video",
+    copy:
+      "Live shows, parties, artist performances, event recaps, release promos, music visuals, and social-ready clips.",
+    to: "/music-videos",
+    cta: "View Event & Music Packages",
+    lane: "artist",
   },
   {
     icon: Home,
@@ -94,16 +112,16 @@ const SERVICE_CARDS = [
     copy:
       "Cinematic property videos, listing content, and social-ready media for Rhode Island agents, builders, property owners, and rental hosts.",
     to: "/real-estate-media",
-    cta: "Explore Real Estate Media",
+    cta: "View Real Estate Pricing",
     lane: "realEstate",
   },
   {
     icon: Heart,
-    title: "Weddings & Events",
+    title: "Wedding Cinematography",
     copy:
-      "Wedding films first, with polished event recap coverage still available for Rhode Island and New England celebrations, fundraisers, conferences, and live moments.",
+      "Premium wedding films for Rhode Island and New England couples who want the weekend preserved as a legacy artifact.",
     to: "/weddings",
-    cta: "Explore Weddings & Events",
+    cta: "Check Wedding Availability",
     lane: "wedding",
   },
 ] as const;
@@ -111,7 +129,7 @@ const SERVICE_CARDS = [
 const TRUST_POINTS = [
   "Warwick, Rhode Island based",
   "Planning, filming, and editing under one roof",
-  "Built for websites, social media, ads, listings, and keepsake films",
+  "Built for websites, social media, ads, and event recaps",
   "Clear starting investments and custom quotes",
   "Cinematic content built with purpose",
 ];
@@ -119,28 +137,28 @@ const TRUST_POINTS = [
 const PACKAGE_PREVIEW = [
   {
     title: "Business & Brand Video",
-    price: BUSINESS_PACKAGES[1].price,
+    price: BUSINESS_PACKAGES[0].price,
     copy: "Short-form, website, testimonial, and campaign-ready brand content.",
     href: "/packages#business-video",
     lane: "business",
   },
   {
     title: "Real Estate Media",
-    price: REAL_ESTATE_PACKAGES[1].price,
+    price: REAL_ESTATE_PACKAGES[0].price,
     copy: "Fast-turn property media and stronger agent-branding assets.",
     href: "/packages#real-estate-media",
     lane: "realEstate",
   },
   {
     title: "Weddings & Events",
-    price: WEDDING_PACKAGES[1].price,
-    copy: "Wedding films lead this lane. Event recap coverage stays available by quote.",
+    price: WEDDING_PACKAGES[0].price,
+    copy: "Wedding films first, with event recap coverage available by quote.",
     href: "/packages#weddings-events",
     lane: "wedding",
   },
   {
     title: "Artist Visuals",
-    price: MUSIC_PACKAGES[1].price,
+    price: MUSIC_PACKAGES[0].price,
     copy: "Music videos, performance visuals, and release-ready creative cuts.",
     href: "/packages#artist-visuals",
     lane: "artist",
@@ -173,12 +191,13 @@ function HomePage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
           <p className="timecode mb-5">RHODE ISLAND VIDEO PRODUCTION</p>
           <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] max-w-6xl text-balance">
-            Strategic Video Production for Rhode Island Brands, Real Estate, Weddings & Artists
+            Strategic Video Production for Rhode Island Brands, Events, Real Estate, Weddings &
+            Artists
           </h1>
           <p className="mt-6 text-base md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            Good Looks Media Group plans, films, and edits cinematic video content for businesses,
-            real estate brands, wedding weekends, select event recap needs, and artist releases.
-            Real people. Real stories. Filmed with purpose.
+            Good Looks Media Group plans, films, and edits cinematic video content built for
+            websites, social media, ads, events, and long-term brand visibility. Real people. Real
+            stories. Filmed with purpose.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
@@ -207,19 +226,19 @@ function HomePage() {
             title="Choose the lane that fits the outcome."
             subtitle="The public site stays focused so each client type can find the right starting point quickly."
           />
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 gap-5">
             {SERVICE_CARDS.map(({ icon: Icon, title, copy, to, cta, lane }) => (
               <Link
                 key={title}
                 to={to}
-                className="group relative glass-panel bento-tile p-7 transition hover:-translate-y-1 hover:border-primary"
+                className="group relative glass-panel bento-tile min-h-[300px] p-7 transition hover:-translate-y-1 hover:border-primary flex flex-col"
                 data-track-event="select_service_lane"
                 data-service-lane={lane}
               >
                 <Icon className="w-8 h-8 text-primary" />
                 <h2 className="font-display text-3xl uppercase mt-5">{title}</h2>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{copy}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-widest text-foreground">
+                <span className="mt-auto pt-6 inline-flex items-center gap-2 text-sm uppercase tracking-widest text-foreground">
                   {cta} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
                 </span>
               </Link>
@@ -356,7 +375,7 @@ function HomePage() {
           <SectionHeading
             eyebrow="Pricing preview"
             title="Clear starting investments. Custom quotes based on scope."
-            subtitle="The prices shown here are the most representative public anchors for each lane, not the smallest possible scope."
+            subtitle="The homepage stays concise. The pricing page shows the four main lanes in more detail."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {PACKAGE_PREVIEW.map((item) => (

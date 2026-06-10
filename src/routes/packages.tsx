@@ -20,20 +20,20 @@ export const Route = createFileRoute("/packages")({
       {
         name: "description",
         content:
-          "Starting investments for business video, real estate media, wedding films, event coverage, and artist visuals in Rhode Island. Final quotes depend on scope.",
+          "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island. Final quotes depend on scope.",
       },
       { property: "og:title", content: "Video Pricing in Rhode Island | Good Looks Media Group" },
       {
         property: "og:description",
         content:
-          "Starting investments for business video, real estate media, wedding films, event coverage, and artist visuals in Rhode Island.",
+          "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island.",
       },
       { property: "og:url", content: absoluteUrl("/packages") },
       { name: "twitter:title", content: "Video Pricing in Rhode Island | Good Looks Media Group" },
       {
         name: "twitter:description",
         content:
-          "Starting investments for business video, real estate media, wedding films, event coverage, and artist visuals in Rhode Island.",
+          "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island.",
       },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/packages") }],
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/packages")({
           pageJsonLd({
             name: "Video Pricing in Rhode Island",
             description:
-              "Starting investments for business video, real estate media, wedding films, event coverage, and artist visuals in Rhode Island.",
+              "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island.",
             path: "/packages",
           }),
         ),
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/packages")({
 const FAQ = [
   {
     q: "Are these fixed prices?",
-    a: "No. These are public starting points. The featured middle tier in each lane is the best planning anchor, and final quotes still depend on scope, coverage time, deliverables, travel, and the production approach.",
+    a: "No. These are starting investments and anchor tiers. Final quotes depend on scope, coverage time, deliverables, travel, and the production approach.",
   },
   {
     q: "Why are weddings and events grouped together here?",
@@ -119,9 +119,8 @@ function PackagesPage() {
                 Business, real estate, weddings & events, and artist visuals.
               </h2>
               <p className="mt-4 text-muted-foreground max-w-3xl">
-                Use these starting points to understand scope. In most lanes, the featured middle
-                tier is the clearest public anchor, while tighter entry tiers remain available when
-                the project scope is smaller.
+                Use these starting points to understand scope. Final quotes depend on what the
+                video has to do after the shoot, not just what happens on the day.
               </p>
             </div>
             <Link
@@ -185,7 +184,7 @@ function PackagesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Weddings & Events"
-            subtitle="Wedding films stay first. Event recap coverage remains available below for organizers who need polished post-event content."
+            subtitle="Wedding films stay first. Event recap coverage stays available in the same public lane."
           />
           <div className="grid gap-10">
             <div>

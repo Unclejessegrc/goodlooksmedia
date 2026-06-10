@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { BUSINESS_PACKAGES, MUSIC_PACKAGES, REAL_ESTATE_PACKAGES, WEDDING_PACKAGES } from "@/data/packages";
 import { absoluteUrl, pageJsonLd } from "@/data/seo";
 
 export const Route = createFileRoute("/services")({
@@ -54,7 +53,7 @@ const CORE_LANES = [
     description:
       "The commercial lane for brand films, social campaigns, testimonials, launch videos, and trust-building content.",
     role: "Best for businesses that need clearer positioning and stronger buyer confidence.",
-    anchor: BUSINESS_PACKAGES[1].price,
+    anchor: "Starting at $900",
     href: "/business-video",
     packageHref: "/packages#business-video",
     quoteHref: "/contact?projectType=Business%20%26%20Brand%20Video",
@@ -66,7 +65,7 @@ const CORE_LANES = [
     description:
       "The growth lane for listing videos, agent branding, cinematic property walkthroughs, and short-form distribution.",
     role: "Best for agents, teams, and brokerages that want more than a commodity walkthrough vendor.",
-    anchor: REAL_ESTATE_PACKAGES[1].price,
+    anchor: "Starting at $350",
     href: "/real-estate-media",
     packageHref: "/packages#real-estate-media",
     quoteHref: "/contact?projectType=Real%20Estate%20Media",
@@ -78,7 +77,7 @@ const CORE_LANES = [
     description:
       "The premium emotional lane for wedding-first storytelling, with event recap coverage as a secondary offering.",
     role: "Best for couples first, then organizers who still want polished event coverage.",
-    anchor: WEDDING_PACKAGES[1].price,
+    anchor: "Starting at $1,000",
     href: "/weddings",
     packageHref: "/packages#weddings-events",
     quoteHref: "/contact?projectType=Wedding%20Film",
@@ -90,7 +89,7 @@ const CORE_LANES = [
     description:
       "A separate creative lane for music videos, release visuals, performance edits, and campaign-ready promo assets.",
     role: "Best for artists who need visuals tied to a release, not filler footage.",
-    anchor: MUSIC_PACKAGES[1].price,
+    anchor: "Starting at $900",
     href: "/music-videos",
     packageHref: "/packages#artist-visuals",
     quoteHref: "/contact?projectType=Artist%20Visuals",

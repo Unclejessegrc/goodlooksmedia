@@ -21,8 +21,8 @@ const FAQ = [
     a: "Yes. Good Looks Media Group is based in Warwick, Rhode Island and films weddings across Rhode Island and nearby New England by quote.",
   },
   {
-    q: "Can this page also cover event recap films?",
-    a: "Yes. This lane is built wedding-first, but we still quote event recap coverage for fundraisers, conferences, parties, performances, and other live moments when the fit is right.",
+    q: "Can this page also cover event films?",
+    a: "Yes. Weddings are the primary focus here, but we also quote event recap coverage for fundraisers, conferences, parties, performances, and other live moments.",
   },
   {
     q: "What do clients usually receive?",
@@ -55,21 +55,21 @@ export const Route = createFileRoute("/weddings")({
       {
         name: "description",
         content:
-          "Wedding videography in Rhode Island and New England, with event recap coverage available as a secondary quote path for conferences, fundraisers, parties, and performances.",
+          "Wedding and event videography in Rhode Island and New England. Wedding films first, with event recaps for conferences, fundraisers, parties, and performances available by quote.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Wedding & Event Videography in Rhode Island and New England | Good Looks Media Group" },
       {
         property: "og:description",
         content:
-          "Wedding films first, with event recap coverage available as a secondary quote path.",
+          "Wedding films first, with event recaps for conferences, fundraisers, parties, and performances available by quote.",
       },
       { property: "og:url", content: absoluteUrl("/weddings") },
       { name: "twitter:title", content: "Wedding & Event Videography in Rhode Island and New England | Good Looks Media Group" },
       {
         name: "twitter:description",
         content:
-          "Wedding films first, with event recap coverage available as a secondary quote path.",
+          "Wedding films first, with event recaps for conferences, fundraisers, parties, and performances available by quote.",
       },
     ],
     links: [
@@ -125,9 +125,9 @@ function WeddingsPage() {
             Wedding & Event Videography in Rhode Island and New England
           </h1>
           <p className="mt-6 max-w-3xl text-lg md:text-xl leading-relaxed text-muted-foreground">
-            This page is built wedding-first for couples who want a film worth keeping. Event
-            recap coverage still lives here, but as a secondary quote path for conferences,
-            fundraisers, parties, performances, and other live moments.
+            Wedding films are the heart of this lane. We also quote event recaps for conferences,
+            fundraisers, parties, performances, and other live moments that need to be remembered
+            or reused after the day is over.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
@@ -146,7 +146,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="event"
             >
-              Ask About Event Coverage
+              Plan an Event Film
             </Link>
           </div>
         </div>
@@ -179,8 +179,8 @@ function WeddingsPage() {
             <p className="timecode mt-6 mb-3">Event coverage</p>
             <h3 className="font-display text-3xl uppercase leading-none">Live moments stay welcome.</h3>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Event recap work remains part of this lane for clients who need a sharper post-event
-              asset than phone footage can give them.
+              Event films remain part of this lane for clients who need a sharper recap than phone
+              footage can give them.
             </p>
           </article>
         </div>
@@ -243,7 +243,7 @@ function WeddingsPage() {
           <div>
             <SectionHeading
               eyebrow="Events beyond weddings"
-              title="Event recap coverage stays available, just lower in the hierarchy."
+              title="Event recaps stay available, just lower in the hierarchy."
               subtitle="If you need a fundraiser film, conference recap, party coverage, or a performance edit, we still quote that work inside this lane."
             />
             <ul className="grid sm:grid-cols-2 gap-3">
@@ -271,7 +271,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="event"
             >
-              Ask About Event Coverage <ArrowRight className="w-4 h-4" />
+              Check Event Availability <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -299,8 +299,8 @@ function WeddingsPage() {
             Start with availability. Build the film from there.
           </h2>
           <p className="mt-6 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Wedding weekends stay at the center of this lane. If you need event recap coverage,
-            start with the date, city, and the kind of after-the-fact asset you want to keep.
+            Whether it is a wedding weekend or an event recap, the first step is the date, the
+            city, and the kind of story you want to keep.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link
@@ -319,7 +319,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="event"
             >
-              Ask About Event Coverage
+              Plan an Event Film
             </Link>
           </div>
         </div>

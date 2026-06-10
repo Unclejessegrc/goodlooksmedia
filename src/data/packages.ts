@@ -24,7 +24,7 @@ export const EVENT_PACKAGES: PackageData[] = [
     serviceLane: "event",
     name: "Main Event Film",
     price: "Starting at $1,400",
-    priceLabel: "Most common fit",
+    priceLabel: "Signature anchor",
     featured: true,
     bestFor:
       "Best fit for conferences, performances, parties, community events, and higher-energy recap coverage.",
@@ -82,7 +82,7 @@ export const MUSIC_PACKAGES: PackageData[] = [
     serviceLane: "artist",
     name: "Concept Music Video",
     price: "Starting at $1,800",
-    priceLabel: "Most common fit",
+    priceLabel: "Signature anchor",
     featured: true,
     bestFor:
       "Best for artists who want a stronger concept, multiple setups, and a more intentional release asset.",
@@ -121,8 +121,8 @@ export const WEDDING_PACKAGES: PackageData[] = [
     contactProjectType: "Wedding Film",
     serviceLane: "wedding",
     name: "Teaser Film",
-    price: "Starting at $2,400",
-    priceLabel: "Starting investment",
+    price: "$1,000 to $1,600",
+    priceLabel: "Package range",
     bestFor:
       "Best for intimate weddings, elopements, and couples who want a short cinematic keepsake without a full-day story edit.",
     includes: [
@@ -139,8 +139,8 @@ export const WEDDING_PACKAGES: PackageData[] = [
     contactProjectType: "Wedding Film",
     serviceLane: "wedding",
     name: "Signature Highlight",
-    price: "Starting at $3,800",
-    priceLabel: "Most common fit",
+    price: "$1,800 to $2,600",
+    priceLabel: "Signature range",
     featured: true,
     bestFor:
       "Best fit for most couples who want a stronger emotional edit, cleaner audio moments, and a more complete record of the day.",
@@ -158,8 +158,8 @@ export const WEDDING_PACKAGES: PackageData[] = [
     contactProjectType: "Wedding Film",
     serviceLane: "wedding",
     name: "Full Story Weekend",
-    price: "Starting at $5,500+",
-    priceLabel: "Custom quote",
+    price: "$3,000 to $4,200",
+    priceLabel: "Premium range",
     bestFor:
       "Best for larger weddings, multi-part coverage, fuller story edits, and couples treating the film as a long-term family artifact.",
     includes: [
@@ -198,7 +198,7 @@ export const BUSINESS_PACKAGES: PackageData[] = [
     serviceLane: "business",
     name: "Brand Builder",
     price: "Starting at $1,800",
-    priceLabel: "Most common fit",
+    priceLabel: "Signature anchor",
     featured: true,
     bestFor:
       "Best fit for most businesses. Built around a core website video, testimonial, or brand story with supporting short-form cutdowns.",
@@ -237,7 +237,7 @@ export const REAL_ESTATE_PACKAGES: PackageData[] = [
     contactProjectType: "Real Estate Media",
     serviceLane: "realEstate",
     name: "Social Discovery",
-    price: "Starting at $450",
+    price: "Starting at $350",
     priceLabel: "Fast-turn launch",
     bestFor:
       "Best for agents who need a fast property-first video package for Reels, listing pages, and a clean launch post.",
@@ -255,8 +255,8 @@ export const REAL_ESTATE_PACKAGES: PackageData[] = [
     contactProjectType: "Real Estate Media",
     serviceLane: "realEstate",
     name: "Cinematic Lifestyle",
-    price: "Starting at $750",
-    priceLabel: "Most common fit",
+    price: "Starting at $650",
+    priceLabel: "Signature anchor",
     featured: true,
     bestFor:
       "Best fit for listings where the agent needs the neighborhood, lifestyle, and property story to work together in one branded asset.",
@@ -274,8 +274,8 @@ export const REAL_ESTATE_PACKAGES: PackageData[] = [
     contactProjectType: "Real Estate Media",
     serviceLane: "realEstate",
     name: "Agent Brand Campaign",
-    price: "$1,500+",
-    priceLabel: "Campaign quote",
+    price: "Starting at $1,500",
+    priceLabel: "Campaign anchor",
     bestFor:
       "Best for premium listings, agent brand campaigns, team launches, and high-energy edits built around attention and repeatable personal branding.",
     includes: [
