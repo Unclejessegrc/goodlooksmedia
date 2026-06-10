@@ -190,7 +190,7 @@ function HomePage() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
           <p className="timecode mb-5">RHODE ISLAND VIDEO PRODUCTION</p>
-          <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] max-w-6xl text-balance">
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl uppercase leading-[0.95] max-w-5xl text-balance">
             Strategic Video Production for Rhode Island Brands, Events, Real Estate, Weddings &
             Artists
           </h1>
@@ -301,8 +301,8 @@ function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Curated proof"
-            title="Start with the reel. Public case studies are curated by approval."
-            subtitle="The reel shows range and production style. Lane-specific proof is being tightened so every public example actually helps the right buyer make a decision."
+            title="Start with the reel. Public video samples are curated by approval."
+            subtitle="The reel shows range and production style. Lane-specific proof is being tightened so every public example helps the right buyer make a decision."
             align="center"
           />
           <div className="relative aspect-video rounded-2xl overflow-hidden border border-border bg-black red-glow">

@@ -12,13 +12,13 @@ export const Route = createFileRoute("/portfolio")({
           {
             name: "description",
             content:
-              "Portfolio alias for selected work, case-study examples, and the Good Looks Media Group director reel.",
+              "Portfolio alias for selected work, public samples, and the Good Looks Media Group director reel.",
           },
           { property: "og:title", content: "Portfolio | Selected Work | Good Looks Media Group" },
           {
             property: "og:description",
             content:
-              "Portfolio alias for selected work, case-study examples, and the Good Looks Media Group director reel.",
+              "Portfolio alias for selected work, public samples, and the Good Looks Media Group director reel.",
           },
           { property: "og:url", content: absoluteUrl("/portfolio") },
         ]
