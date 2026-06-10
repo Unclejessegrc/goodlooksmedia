@@ -163,7 +163,7 @@ function MusicPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Selected proof"
-            title="Approved artist visuals and public samples."
+            title="Approved artist visuals and case-study style examples."
             subtitle="These public examples are anonymized on purpose so the work can stay descriptive without turning into placeholder filler."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

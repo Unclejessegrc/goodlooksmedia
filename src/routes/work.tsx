@@ -15,13 +15,13 @@ export const Route = createFileRoute("/work")({
           {
             name: "description",
             content:
-              "Director reel and approved artist visual samples from Good Looks Media Group in Rhode Island.",
+              "Director reel and approved artist visual case-study examples from Good Looks Media Group in Rhode Island.",
           },
           { property: "og:title", content: "Selected Work | Good Looks Media Group" },
           {
             property: "og:description",
             content:
-              "Director reel and approved artist visual samples from Good Looks Media Group in Rhode Island.",
+              "Director reel and approved artist visual case-study examples from Good Looks Media Group in Rhode Island.",
           },
           { property: "og:url", content: absoluteUrl("/work") },
         ]
@@ -80,7 +80,7 @@ export function WorkPage() {
           </h1>
           <p className="mt-5 text-muted-foreground text-lg max-w-3xl leading-relaxed">
             This gallery stays intentionally selective. Public examples lean toward the director
-            reel and approved artist visual samples, while many client-facing commercial,
+            reel and approved artist visual case studies, while many client-facing commercial,
             real-estate, and wedding examples stay private or are shared directly during the quote
             process.
           </p>
