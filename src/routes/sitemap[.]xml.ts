@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 import { SHOW_PORTFOLIO } from "@/config/features";
 import { absoluteUrl } from "@/data/seo";
 
-const LASTMOD = "2026-05-29";
+const LASTMOD = "2026-06-10";
 
 interface SitemapEntry {
   path: string;
@@ -17,19 +17,17 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/events-recaps", changefreq: "weekly", priority: "1.0" },
-          ...(SHOW_PORTFOLIO
-            ? [{ path: "/work", changefreq: "weekly" as const, priority: "0.9" }]
-            : []),
-          { path: "/weddings", changefreq: "monthly", priority: "0.9" },
-          { path: "/for-businesses", changefreq: "monthly", priority: "0.9" },
-          { path: "/music-videos", changefreq: "monthly", priority: "0.9" },
-          { path: "/editing", changefreq: "monthly", priority: "0.8" },
-          { path: "/packages", changefreq: "monthly", priority: "0.9" },
-          { path: "/services", changefreq: "monthly", priority: "0.7" },
-          { path: "/business-video", changefreq: "monthly", priority: "0.7" },
-          { path: "/about", changefreq: "monthly", priority: "0.7" },
+          { path: "/business-video", changefreq: "weekly", priority: "0.95" },
+          { path: "/real-estate-media", changefreq: "weekly", priority: "0.95" },
+          { path: "/weddings", changefreq: "weekly", priority: "0.9" },
+          { path: "/packages", changefreq: "weekly", priority: "0.9" },
           { path: "/contact", changefreq: "monthly", priority: "0.95" },
+          { path: "/music-videos", changefreq: "monthly", priority: "0.8" },
+          { path: "/editing", changefreq: "monthly", priority: "0.6" },
+          { path: "/about", changefreq: "monthly", priority: "0.7" },
+          ...(SHOW_PORTFOLIO
+            ? [{ path: "/work", changefreq: "monthly" as const, priority: "0.7" }]
+            : []),
         ];
         const urls = entries.map(
           (e) =>

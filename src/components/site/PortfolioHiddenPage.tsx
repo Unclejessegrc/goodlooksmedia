@@ -12,9 +12,9 @@ export function PortfolioHiddenPage() {
             Our full portfolio is being <span className="text-primary">curated.</span>
           </h1>
           <p className="mt-6 text-muted-foreground text-lg max-w-3xl leading-relaxed">
-            We are updating this section with real project examples that properly represent our
-            event, artist, wedding, business, reel, documentary, and custom video work. In the
-            meantime, you can watch the director reel, compare packages, or request a quote.
+            We are updating this section with approved case-study style examples that better match
+            the current service lanes. In the meantime, you can watch the director reel, compare
+            pricing, or request a project quote.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
@@ -24,22 +24,22 @@ export function PortfolioHiddenPage() {
               <Play className="w-4 h-4 fill-current" /> Watch the Director Reel
             </a>
             <Link
-              to="/events-recaps"
+              to="/music-videos"
               className="inline-flex items-center gap-2 border border-foreground/30 px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:bg-foreground/10"
             >
-              Events & Music Video <ArrowRight className="w-4 h-4" />
+              Artist Visuals <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               to="/packages"
               className="inline-flex items-center gap-2 border border-foreground/30 px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:bg-foreground/10"
             >
-              View Packages <ArrowRight className="w-4 h-4" />
+              View Pricing <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 border border-foreground/30 px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:bg-foreground/10"
-              data-track-event="quote_cta_click"
-              data-service-lane="event"
+              data-track-event="cta_click_quote"
+              data-service-lane="general"
             >
               Request a Quote <ArrowRight className="w-4 h-4" />
             </Link>

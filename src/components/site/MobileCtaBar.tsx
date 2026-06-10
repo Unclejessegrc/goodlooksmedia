@@ -9,7 +9,7 @@ export function MobileCtaBar() {
         <a
           href={CONTACT.telHref}
           className="flex flex-col items-center py-3 text-foreground"
-          data-track-event="phone_click"
+          data-track-event="click_call"
         >
           <Phone className="w-5 h-5 mb-0.5" />
           <span className="text-xs uppercase tracking-wider">Call</span>
@@ -17,6 +17,7 @@ export function MobileCtaBar() {
         <a
           href={CONTACT.smsHref}
           className="flex flex-col items-center py-3 text-foreground"
+          data-track-event="click_text"
         >
           <MessageSquare className="w-5 h-5 mb-0.5" />
           <span className="text-xs uppercase tracking-wider">Text</span>
@@ -24,8 +25,8 @@ export function MobileCtaBar() {
         <Link
           to="/contact"
           className="flex flex-col items-center py-3 bg-primary text-primary-foreground"
-          data-track-event="quote_cta_click"
-          data-service-lane="event"
+          data-track-event="cta_click_quote"
+          data-service-lane="general"
         >
           <FileText className="w-5 h-5 mb-0.5" />
           <span className="text-xs uppercase tracking-wider font-semibold">Quote</span>

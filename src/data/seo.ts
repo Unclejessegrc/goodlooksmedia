@@ -6,9 +6,9 @@ export const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/73fa5981-b0b2-4bb4-bbf0-0217ea63b5d4/id-preview-dee7a45a--c960d588-e9bd-406c-bb13-7d348a108e08.lovable.app-1778958773703.png";
 
 export const SERVICE_AREAS = [
+  "Warwick, RI",
   "Rhode Island",
   "Providence, RI",
-  "Warwick, RI",
   "Cranston, RI",
   "Pawtucket, RI",
   "Newport, RI",
@@ -22,31 +22,19 @@ export const SERVICE_AREAS = [
 ];
 
 export const SEO_SERVICES = [
-  "Rhode Island videographer",
   "Rhode Island video production",
-  "Rhode Island media company",
-  "Videographer in Rhode Island",
-  "Rhode Island wedding videographer",
-  "Wedding videographer in Rhode Island",
-  "Wedding video packages Rhode Island",
-  "Rhode Island event videographer",
+  "Rhode Island video marketing",
+  "Rhode Island strategic video production",
+  "Rhode Island business video",
   "Rhode Island commercial video production",
-  "Commercial video for Rhode Island businesses",
+  "Rhode Island real estate video",
+  "Rhode Island real estate media",
+  "Agent branding video Rhode Island",
+  "Rhode Island wedding videographer",
+  "Rhode Island event videography",
   "Rhode Island music video production",
-  "Business video Rhode Island",
-  "New England videographer",
+  "Business video production Rhode Island",
   "New England video production",
-  "Connecticut videographer",
-  "Massachusetts videographer",
-  "Wedding videography",
-  "Event recap videos",
-  "Business video production",
-  "Commercial video production",
-  "Music video production",
-  "Artist performance video",
-  "Video editing services RI",
-  "Post-production services",
-  "Reels and short-form content",
 ];
 
 export function absoluteUrl(path = "/") {
@@ -63,13 +51,14 @@ export function businessJsonLd() {
     image: OG_IMAGE,
     logo: OG_IMAGE,
     description:
-      "Good Looks Media Group is a Rhode Island video production company serving Rhode Island and nearby New England with event recaps, artist visuals, wedding films, commercial video, reels, and custom stories.",
+      "Good Looks Media Group is a Warwick, Rhode Island video marketing and production company serving Rhode Island and nearby New England with business video, real estate media, wedding films, event recaps, and artist visuals.",
     telephone: "+1-401-465-1529",
     email: CONTACT.email,
     priceRange: "$$",
     foundingDate: "2018",
     address: {
       "@type": "PostalAddress",
+      addressLocality: "Warwick",
       addressRegion: "RI",
       addressCountry: "US",
     },
@@ -111,10 +100,12 @@ export function serviceJsonLd({
   name,
   description,
   path,
+  serviceType,
 }: {
   name: string;
   description: string;
   path: string;
+  serviceType?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -125,7 +116,53 @@ export function serviceJsonLd({
     url: absoluteUrl(path),
     provider: { "@id": `${SITE_URL}/#business`, name: SITE_NAME },
     areaServed: SERVICE_AREAS.map((area) => ({ "@type": "Place", name: area })),
-    serviceType: name,
+    serviceType: serviceType ?? name,
+  };
+}
+
+export function videoObjectJsonLd({
+  name,
+  description,
+  thumbnailUrl,
+  uploadDate,
+  duration,
+  embedUrl,
+  contentUrl,
+}: {
+  name: string;
+  description: string;
+  thumbnailUrl?: string;
+  uploadDate?: string;
+  duration?: string;
+  embedUrl?: string;
+  contentUrl?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name,
+    description,
+    ...(thumbnailUrl ? { thumbnailUrl: [thumbnailUrl] } : {}),
+    ...(uploadDate ? { uploadDate } : {}),
+    ...(duration ? { duration } : {}),
+    ...(embedUrl ? { embedUrl } : {}),
+    ...(contentUrl ? { contentUrl } : {}),
+    publisher: { "@id": `${SITE_URL}/#business`, name: SITE_NAME },
+  };
+}
+
+export function faqJsonLd(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
   };
 }
 

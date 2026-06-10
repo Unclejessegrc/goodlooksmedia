@@ -1,34 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
 import { ArrowRight, Check, Film, Scissors, Upload } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { PackageCard } from "@/components/site/PackageCard";
 import { EDITING_PACKAGES } from "@/data/packages";
 import { absoluteUrl, pageJsonLd, serviceJsonLd } from "@/data/seo";
-import { trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/editing")({
   head: () => ({
     meta: [
-      { title: "Video Editing Services RI | Good Looks Media" },
+      { title: "Video Editing Services | Good Looks Media Group" },
       {
         name: "description",
         content:
-          "Already have footage? Good Looks Media edits reels, promos, recaps, music videos, wedding highlights, and client-shot videos in Rhode Island.",
+          "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
       },
-      { property: "og:title", content: "Video Editing Services RI | Good Looks Media" },
+      { property: "og:title", content: "Video Editing Services | Good Looks Media Group" },
       {
         property: "og:description",
         content:
-          "Already have footage? Good Looks Media edits reels, promos, recaps, music videos, wedding highlights, and client-shot videos in Rhode Island.",
+          "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
       },
       { property: "og:url", content: absoluteUrl("/editing") },
-      { name: "twitter:title", content: "Video Editing Services RI | Good Looks Media" },
+      { name: "twitter:title", content: "Video Editing Services | Good Looks Media Group" },
       {
         name: "twitter:description",
         content:
-          "Already have footage? Good Looks Media edits reels, promos, recaps, music videos, wedding highlights, and client-shot videos in Rhode Island.",
+          "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
       },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/editing") }],
@@ -41,13 +39,13 @@ export const Route = createFileRoute("/editing")({
             serviceJsonLd({
               name: "Video Editing & Post-Production",
               description:
-                "Video editing and post-production for reels, promos, recaps, music videos, wedding highlights, and client-shot videos in Rhode Island.",
+                "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
               path: "/editing",
             }),
             pageJsonLd({
               name: "Video Editing & Post-Production",
               description:
-                "Already have footage? Good Looks Media edits reels, promos, recaps, music videos, wedding highlights, and client-shot videos in Rhode Island.",
+                "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
               path: "/editing",
             }),
           ],
@@ -103,28 +101,25 @@ const BEFORE_WE_START = [
 ];
 
 function EditingPage() {
-  useEffect(() => {
-    trackEvent("editing_page_view", { service_lane: "editing", page_path: window.location.pathname });
-  }, []);
-
   return (
     <SiteLayout>
       <section className="relative overflow-hidden pt-20 pb-14 md:pt-28 md:pb-20">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
         <div className="absolute inset-0 film-grain" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="timecode mb-4">Already filmed it?</p>
+          <p className="timecode mb-4">EDITING ONLY</p>
           <h1 className="font-display text-5xl md:text-7xl uppercase leading-[0.95] max-w-5xl">
             Video Editing & Post-Production
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            Send us the footage. We'll handle the cut, pacing, sound, color, and final export.
+            Already have the footage? We can step in for the cut, pacing, sound, color, captions,
+            and final exports without turning editing into a separate full-service production lane.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a
               href={QUOTE_LINK}
               className="bg-primary text-primary-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:opacity-90 red-glow"
-              data-track-event="click_editing_quote"
+              data-track-event="cta_click_quote"
               data-service-lane="editing"
             >
               Get an Editing Quote
@@ -132,7 +127,7 @@ function EditingPage() {
             <a
               href={QUOTE_LINK}
               className="border border-foreground/30 text-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:bg-foreground/10"
-              data-track-event="click_editing_quote"
+              data-track-event="cta_click_quote"
               data-service-lane="editing"
             >
               Send Footage Details
@@ -173,7 +168,7 @@ function EditingPage() {
             title="Simple editing options."
             subtitle="Pricing depends on footage quantity, organization, audio quality, edit complexity, and final deliverables."
           />
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-4 gap-6 mt-8">
             {EDITING_PACKAGES.map((pkg) => (
               <PackageCard key={pkg.name} pkg={pkg} />
             ))}
@@ -188,7 +183,7 @@ function EditingPage() {
 
       <section className="py-16 md:py-24 bg-card/40 border-y border-border">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Before we start" title="Send the footage. We'll be straight with you." />
+          <SectionHeading eyebrow="Before we start" title="Send the footage. We&apos;ll be straight with you." />
           <div className="grid sm:grid-cols-2 gap-4">
             {BEFORE_WE_START.map((item) => (
               <div key={item} className="bg-card border border-border rounded-xl p-5 flex gap-3">
@@ -207,12 +202,12 @@ function EditingPage() {
             Ready to finish the video?
           </h2>
           <p className="mt-5 text-muted-foreground text-lg">
-            Send us the footage details and we'll tell you what it would take to edit it right.
+            Send the footage details and we&apos;ll tell you what it would take to edit it right.
           </p>
           <a
             href={QUOTE_LINK}
             className="mt-8 inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold red-glow"
-            data-track-event="click_editing_quote"
+            data-track-event="cta_click_quote"
             data-service-lane="editing"
           >
             Get an Editing Quote <ArrowRight className="w-4 h-4" />

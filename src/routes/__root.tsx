@@ -76,11 +76,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#231f20" },
-      { title: "Good Looks Media Group | Rhode Island Video Production" },
+      { title: "Good Looks Media Group | Rhode Island Video Production Company" },
       {
         name: "description",
         content:
-          "Event recap, music video, wedding films, commercial video, and editing for Rhode Island. Real production experience. Clear pricing. Request a quote today.",
+          "Warwick, Rhode Island video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
       },
       { name: "author", content: SITE_NAME },
       { property: "og:site_name", content: SITE_NAME },
@@ -88,21 +88,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       {
         property: "og:title",
-        content: "Good Looks Media Group | Rhode Island Video Production",
+        content: "Good Looks Media Group | Rhode Island Video Production Company",
       },
       {
         name: "twitter:title",
-        content: "Good Looks Media Group | Rhode Island Video Production",
+        content: "Good Looks Media Group | Rhode Island Video Production Company",
       },
       {
         property: "og:description",
         content:
-          "Event recap, music video, wedding films, commercial video, and editing for Rhode Island. Real production experience. Clear pricing. Request a quote today.",
+          "Warwick, Rhode Island video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
       },
       {
         name: "twitter:description",
         content:
-          "Event recap, music video, wedding films, commercial video, and editing for Rhode Island. Real production experience. Clear pricing. Request a quote today.",
+          "Warwick, Rhode Island video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
       },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
@@ -134,15 +134,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NDY5GXH4MJ"></script>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-NDY5GXH4MJ"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-NDY5GXH4MJ');
+  const configureAnalytics = () => {
+    gtag('js', new Date());
+    gtag('config', 'G-NDY5GXH4MJ');
+  };
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(configureAnalytics);
+  } else {
+    window.setTimeout(configureAnalytics, 1200);
+  }
 `,
           }}
         />

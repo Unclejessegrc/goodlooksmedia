@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { CheckCircle2, Instagram, Mail, MessageSquare, Phone, Youtube } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -27,24 +27,24 @@ export const Route = createFileRoute("/contact")({
   }),
   head: () => ({
     meta: [
-      { title: "Contact & Quote Request | Good Looks Media Group" },
+      { title: "Request a Quote | Good Looks Media Group" },
       {
         name: "description",
         content:
-          "Request a quote for event, wedding, music video, editing, or commercial video in Rhode Island. Send the details and Good Looks will respond.",
+          "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
       },
-      { property: "og:title", content: "Contact & Quote Request | Good Looks Media Group" },
+      { property: "og:title", content: "Request a Quote | Good Looks Media Group" },
       {
         property: "og:description",
         content:
-          "Request a quote for event, wedding, music video, editing, or commercial video in Rhode Island.",
+          "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
       },
       { property: "og:url", content: absoluteUrl("/contact") },
-      { name: "twitter:title", content: "Contact & Quote Request | Good Looks Media Group" },
+      { name: "twitter:title", content: "Request a Quote | Good Looks Media Group" },
       {
         name: "twitter:description",
         content:
-          "Request a quote for event, wedding, music video, editing, or commercial video in Rhode Island.",
+          "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
       },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/contact") }],
@@ -53,9 +53,9 @@ export const Route = createFileRoute("/contact")({
         type: "application/ld+json",
         children: JSON.stringify(
           pageJsonLd({
-            name: "Contact & Quote Request",
+            name: "Request a Quote",
             description:
-              "Request a quote for event, wedding, music video, editing, or commercial video in Rhode Island.",
+              "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
             path: "/contact",
           }),
         ),
@@ -66,20 +66,21 @@ export const Route = createFileRoute("/contact")({
 });
 
 const PROJECT_TYPES = [
-  "Event Recap",
-  "Music/Artist Video",
-  "Wedding",
-  "B2B/Commercial",
+  "Business & Brand Video",
+  "Real Estate Media",
+  "Wedding Film",
+  "Event Coverage",
+  "Artist Visuals",
   "Editing Only",
   "Custom Project",
 ] as const;
 
 const BUDGETS = [
-  "Under $250",
-  "$250 to $600",
-  "$600 to $1,200",
-  "$1,200 to $2,500",
-  "$2,500+",
+  "Under $500",
+  "$500 to $1,500",
+  "$1,500 to $3,500",
+  "$3,500 to $6,000",
+  "$6,000+",
   "Not sure yet",
 ] as const;
 
@@ -91,7 +92,7 @@ function readSearchString(value: unknown) {
 
 function presetFromSearch(search: ContactSearch) {
   return {
-    projectType: search.service === "editing" ? "Editing Only" : search.projectType,
+    projectType: search.service === "editing" ? "Editing Only" : normalizeProjectType(search.projectType),
     pkg: search.package,
     utm: {
       utm_source: search.utm_source || "",
@@ -108,13 +109,13 @@ function ContactPage() {
   const [preset, setPreset] = useState<{ projectType?: string; pkg?: string; utm: Record<string, string> }>(
     searchPreset,
   );
-  const [projectTypeValue, setProjectTypeValue] = useState(() => {
-    return normalizeProjectType(searchPreset.projectType) ?? "";
-  });
+  const [projectTypeValue, setProjectTypeValue] = useState(() => searchPreset.projectType ?? "");
+  const hasTrackedFormStart = useRef(false);
 
   useEffect(() => {
     setPreset(searchPreset);
-    setProjectTypeValue(normalizeProjectType(searchPreset.projectType) ?? "");
+    setProjectTypeValue(searchPreset.projectType ?? "");
+    hasTrackedFormStart.current = false;
   }, [
     search.package,
     search.projectType,
@@ -124,8 +125,20 @@ function ContactPage() {
     search.utm_source,
   ]);
 
+  const trackFormStartOnce = () => {
+    if (hasTrackedFormStart.current || typeof window === "undefined") return;
+    hasTrackedFormStart.current = true;
+
+    trackEvent("form_start", {
+      service_lane: serviceLaneFromProject(projectTypeValue || preset.projectType),
+      package_name: preset.pkg,
+      page_path: window.location.pathname,
+    });
+  };
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    trackFormStartOnce();
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -150,19 +163,19 @@ function ContactPage() {
 
       const projectType = formData.get("project_type")?.toString();
       const serviceLane = serviceLaneFromProject(projectType);
+      const packageName = formData.get("package_name")?.toString();
 
-      trackEvent("quote_form_submit", {
+      trackEvent("form_submit", {
         service_lane: serviceLane,
-        package_name: formData.get("package_name")?.toString(),
+        package_name: packageName,
         page_path: window.location.pathname,
       });
-      if (projectType === "Editing Only") {
-        trackEvent("generate_lead", {
-          service_lane: "editing",
-          package_name: formData.get("package_name")?.toString(),
-          page_path: window.location.pathname,
-        });
-      }
+      trackEvent("generate_lead", {
+        service_lane: serviceLane,
+        package_name: packageName,
+        page_path: window.location.pathname,
+      });
+
       setStatus("success");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
@@ -177,18 +190,25 @@ function ContactPage() {
         <section className="min-h-[60vh] flex items-center justify-center text-center px-4 py-24">
           <div className="max-w-xl">
             <CheckCircle2 className="w-16 h-16 text-primary mx-auto mb-6" />
-            <h1 className="font-display text-4xl md:text-5xl uppercase">Thanks.</h1>
+            <h1 className="font-display text-4xl md:text-5xl uppercase">Quote request received.</h1>
             <p className="mt-4 text-muted-foreground text-lg">
-              Thanks. We got your request. Good Looks will review the details and get back to you
-              as soon as possible.
+              We have the details and will review the project before we reply. If the timing is
+              urgent, call or text us directly.
             </p>
             <div className="mt-8 flex justify-center gap-3 flex-wrap">
               <a
                 href={CONTACT.telHref}
                 className="border border-foreground/30 px-5 py-3 rounded-md uppercase tracking-widest text-sm font-semibold"
-                data-track-event="phone_click"
+                data-track-event="click_call"
               >
                 Call {CONTACT.phoneDisplay}
+              </a>
+              <a
+                href={CONTACT.smsHref}
+                className="border border-foreground/30 px-5 py-3 rounded-md uppercase tracking-widest text-sm font-semibold"
+                data-track-event="click_text"
+              >
+                Text us
               </a>
             </div>
           </div>
@@ -204,21 +224,21 @@ function ContactPage() {
           <div className="max-w-xl">
             <h1 className="font-display text-4xl md:text-5xl uppercase">Message not sent.</h1>
             <p className="mt-4 text-muted-foreground text-lg">
-              Something went wrong and your message may not have gone through. Please call or email
-              us directly.
+              Something went wrong, so it is safest to contact us directly by phone, text, or
+              email.
             </p>
             <div className="mt-8 flex justify-center gap-3 flex-wrap">
               <a
                 href={CONTACT.emailHref}
                 className="border border-foreground/30 px-5 py-3 rounded-md uppercase tracking-widest text-sm font-semibold"
-                data-track-event="email_click"
+                data-track-event="click_email"
               >
                 Email
               </a>
               <a
                 href={CONTACT.telHref}
                 className="border border-foreground/30 px-5 py-3 rounded-md uppercase tracking-widest text-sm font-semibold"
-                data-track-event="phone_click"
+                data-track-event="click_call"
               >
                 Call
               </a>
@@ -235,11 +255,12 @@ function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="timecode mb-3">QUOTE REQUEST</p>
           <h1 className="font-display text-5xl md:text-7xl uppercase leading-[0.95] max-w-4xl">
-            Request a <span className="text-primary">Quote.</span>
+            Tell us the project. <span className="text-primary">We&apos;ll shape the quote.</span>
           </h1>
-          <p className="mt-5 text-muted-foreground text-lg max-w-2xl">
-            Tell us the date, city, project type, and budget range. We will help shape the right
-            coverage and send a custom quote.
+          <p className="mt-5 text-muted-foreground text-lg max-w-3xl">
+            This form is for business video, real estate media, wedding films, event coverage,
+            artist visuals, and editing-only projects. Start with the service lane, timing, city,
+            and budget range so we can recommend the right scope.
           </p>
         </div>
       </section>
@@ -250,7 +271,7 @@ function ContactPage() {
             <a
               href={CONTACT.telHref}
               className="flex items-center gap-4 bg-card border border-border rounded-xl p-5 hover:border-primary transition"
-              data-track-event="phone_click"
+              data-track-event="click_call"
             >
               <Phone className="w-6 h-6 text-primary" />
               <div>
@@ -261,6 +282,7 @@ function ContactPage() {
             <a
               href={CONTACT.smsHref}
               className="flex items-center gap-4 bg-card border border-border rounded-xl p-5 hover:border-primary transition"
+              data-track-event="click_text"
             >
               <MessageSquare className="w-6 h-6 text-primary" />
               <div>
@@ -271,7 +293,7 @@ function ContactPage() {
             <a
               href={CONTACT.emailHref}
               className="flex items-center gap-4 bg-card border border-border rounded-xl p-5 hover:border-primary transition"
-              data-track-event="email_click"
+              data-track-event="click_email"
             >
               <Mail className="w-6 h-6 text-primary" />
               <div>
@@ -287,6 +309,7 @@ function ContactPage() {
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
+              onFocusCapture={trackFormStartOnce}
               onSubmit={onSubmit}
               className="order-2 lg:order-1 lg:col-span-2 bg-card border border-border rounded-2xl p-6 md:p-10 grid gap-5"
             >
@@ -316,31 +339,29 @@ function ContactPage() {
 
               {preset.pkg && (
                 <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 text-sm">
-                  Requesting: <strong className="text-primary">{preset.pkg}</strong>
+                  Quote request for <strong className="text-primary">{preset.pkg}</strong>
                 </div>
               )}
 
               <div className="grid md:grid-cols-2 gap-5">
                 <Select
-                  label="Project type"
+                  label="Service lane"
                   name="project_type"
                   options={PROJECT_TYPES}
                   value={projectTypeValue}
                   onChange={(value) => {
                     setProjectTypeValue(value);
-                    if (value === "Editing Only") {
-                      trackEvent("select_service_editing", {
-                        service_lane: "editing",
-                        page_path: window.location.pathname,
-                      });
-                    }
+                    trackEvent("select_service_lane", {
+                      service_lane: serviceLaneFromProject(value),
+                      page_path: window.location.pathname,
+                    });
                   }}
                   required
                 />
-                <Field label="Event or shoot date" name="event_or_shoot_date" required />
+                <Field label="Target shoot date" name="event_or_shoot_date" required />
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Field label="Location / city" name="location_city" required />
+                <Field label="City or location" name="location_city" required />
                 <Select label="Budget range" name="budget_range" options={BUDGETS} required />
               </div>
               <div className="grid md:grid-cols-2 gap-5">
@@ -348,21 +369,20 @@ function ContactPage() {
                 <Field label="Email or phone" name="email_or_phone" required />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Tell us about your project
-                </label>
+                <label className="block text-sm font-medium mb-2">Project details</label>
                 <textarea
                   name="project_details"
                   rows={5}
                   className="w-full bg-background border border-input rounded-md px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Type of event, vibe, deliverables, timing, or anything else we should know."
+                  placeholder="Tell us what needs to be filmed, what the video needs to do, and any deliverables or timing that matter."
                 />
               </div>
               <div className="border-t border-border pt-5 grid gap-5">
                 <div>
-                  <p className="timecode mb-2">Editing details</p>
+                  <p className="timecode mb-2">Editing-only details</p>
                   <p className="text-sm text-muted-foreground">
-                    If you already have footage, these details help us quote the edit cleanly.
+                    If you already have footage, these optional fields help us quote the edit more
+                    accurately.
                   </p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-5">
@@ -374,18 +394,15 @@ function ContactPage() {
                   <Field label="Desired deadline" name="desired_deadline" />
                 </div>
                 <div className="grid md:grid-cols-3 gap-5">
-                  <Select label="Do you need captions?" name="needs_captions" options={YES_NO_MAYBE} />
-                  <Select label="Do you need music?" name="needs_music" options={YES_NO_MAYBE} />
+                  <Select label="Need captions?" name="needs_captions" options={YES_NO_MAYBE} />
+                  <Select label="Need music?" name="needs_music" options={YES_NO_MAYBE} />
                   <Select
-                    label="Do you need color correction?"
+                    label="Need color correction?"
                     name="needs_color_correction"
                     options={YES_NO_MAYBE}
                   />
                 </div>
-                <Field
-                  label="Paste Google Drive / Dropbox / WeTransfer link"
-                  name="footage_link"
-                />
+                <Field label="Google Drive, Dropbox, or WeTransfer link" name="footage_link" />
               </div>
               <button
                 type="submit"
@@ -397,7 +414,15 @@ function ContactPage() {
             </form>
 
             <aside className="order-1 lg:order-2 space-y-4">
-              <SectionHeading eyebrow="Recent work" title="See the feel." />
+              <SectionHeading eyebrow="Best results" title="What helps us quote quickly." />
+              <div className="bg-card border border-border rounded-2xl p-6 grid gap-3 text-sm text-muted-foreground">
+                <p>The clearest quotes start with one service lane, one city, one timeline, and one budget range.</p>
+                <p>
+                  Weddings and events should include the date. Business and real estate projects
+                  should include the usage goal. Editing-only projects should include footage volume
+                  and deadline.
+                </p>
+              </div>
               <a
                 href={CONTACT.instagramUrl}
                 target="_blank"
@@ -432,22 +457,40 @@ function ContactPage() {
 
 function serviceLaneFromProject(projectType?: string) {
   if (!projectType) return "custom";
-  if (projectType.includes("Event")) return "event";
-  if (projectType.includes("Music")) return "artist";
+  if (projectType.includes("Business")) return "business";
+  if (projectType.includes("Real Estate")) return "realEstate";
   if (projectType.includes("Wedding")) return "wedding";
-  if (projectType.includes("B2B")) return "business";
+  if (projectType.includes("Event")) return "event";
+  if (projectType.includes("Artist")) return "artist";
   if (projectType.includes("Editing")) return "editing";
   return "custom";
 }
 
 function normalizeProjectType(projectType?: string) {
   if (!projectType) return undefined;
-  if (projectType === "Events") return "Event Recap";
-  if (projectType === "Artist Video" || projectType === "Music") return "Music/Artist Video";
-  if (projectType === "Business") return "B2B/Commercial";
-  if (projectType === "Editing" || projectType === "editing") {
+  if (projectType === "Business" || projectType === "B2B/Commercial" || projectType === "Business Video") {
+    return "Business & Brand Video";
+  }
+  if (projectType === "Business & Brand Video") return "Business & Brand Video";
+  if (projectType === "Real Estate" || projectType === "Real Estate Media") return "Real Estate Media";
+  if (projectType === "Wedding" || projectType === "Weddings" || projectType === "Wedding Film") {
+    return "Wedding Film";
+  }
+  if (projectType === "Events" || projectType === "Event Recap" || projectType === "Event Coverage") {
+    return "Event Coverage";
+  }
+  if (
+    projectType === "Artist Video" ||
+    projectType === "Music" ||
+    projectType === "Music/Artist Video" ||
+    projectType === "Artist Visuals"
+  ) {
+    return "Artist Visuals";
+  }
+  if (projectType === "Editing" || projectType === "editing" || projectType === "Editing Only") {
     return "Editing Only";
   }
+  if (projectType === "Custom" || projectType === "Custom Project") return "Custom Project";
   return PROJECT_TYPES.find((option) => option === projectType);
 }
 

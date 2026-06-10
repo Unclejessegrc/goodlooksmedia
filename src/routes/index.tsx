@@ -1,21 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  Briefcase,
-  Check,
-  Heart,
-  Music,
-  PartyPopper,
-  Play,
-  Scissors,
-  Video,
-} from "lucide-react";
+import { ArrowRight, Briefcase, Check, Clapperboard, Heart, Home, Sparkles } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { PortfolioCard } from "@/components/site/PortfolioCard";
 import { PORTFOLIO } from "@/data/portfolio";
-import { SHOW_PORTFOLIO } from "@/config/features";
-import { absoluteUrl, businessJsonLd, pageJsonLd, websiteJsonLd } from "@/data/seo";
+import {
+  BUSINESS_PACKAGES,
+  MUSIC_PACKAGES,
+  REAL_ESTATE_PACKAGES,
+  WEDDING_PACKAGES,
+} from "@/data/packages";
+import {
+  absoluteUrl,
+  businessJsonLd,
+  pageJsonLd,
+  videoObjectJsonLd,
+  websiteJsonLd,
+} from "@/data/seo";
 import heroImage from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/")({
@@ -25,14 +26,14 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Event recap, music video, wedding films, and commercial video for Rhode Island. Real production experience. Clear pricing. Request a quote today.",
+          "Strategic Rhode Island video production for business video, real estate media, wedding films, event coverage, and artist visuals. Built for websites, social media, ads, and long-term brand visibility.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Good Looks Media Group | Rhode Island Video Production" },
       {
         property: "og:description",
         content:
-          "Event recap, music video, wedding films, and commercial video for Rhode Island. Real production experience. Clear pricing. Request a quote today.",
+          "Strategic Rhode Island video production for business video, real estate media, wedding films, event coverage, and artist visuals.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: absoluteUrl("/") },
@@ -40,10 +41,13 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "Event recap, music video, wedding films, and commercial video for Rhode Island. Real production experience. Clear pricing. Request a quote today.",
+          "Strategic Rhode Island video production for business video, real estate media, wedding films, event coverage, and artist visuals.",
       },
     ],
-    links: [{ rel: "canonical", href: absoluteUrl("/") }],
+    links: [
+      { rel: "canonical", href: absoluteUrl("/") },
+      { rel: "preload", as: "image", href: heroImage },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -53,10 +57,18 @@ export const Route = createFileRoute("/")({
             businessJsonLd(),
             websiteJsonLd(),
             pageJsonLd({
-              name: "Business, Events & Artist Visuals in Rhode Island",
+              name: "Good Looks Media Group Rhode Island Video Production",
               description:
-                "Cinematic video for Rhode Island businesses, live events, artists, parties, launches, performances, and social-ready campaigns.",
+                "Strategic video production for Rhode Island brands, real estate, wedding films, event coverage, and artists.",
               path: "/",
+            }),
+            videoObjectJsonLd({
+              name: PORTFOLIO[0].title,
+              description: PORTFOLIO[0].description,
+              thumbnailUrl: PORTFOLIO[0].thumbnailUrl,
+              uploadDate: PORTFOLIO[0].uploadDate,
+              embedUrl: PORTFOLIO[0].embedUrl,
+              contentUrl: PORTFOLIO[0].contentUrl,
             }),
           ],
         }),
@@ -68,77 +80,83 @@ export const Route = createFileRoute("/")({
 
 const SERVICE_CARDS = [
   {
-    icon: PartyPopper,
-    title: "Events & Music Video",
-    copy: "Live shows, parties, artist performances, event recaps, release promos, music visuals, and social-ready clips.",
-    to: "/events-recaps",
-    cta: "View Event Packages",
-    primary: true,
-    lane: "event",
+    icon: Briefcase,
+    title: "Business & Brand Video",
+    copy:
+      "Story-driven videos for local businesses, nonprofits, and brands that need to explain what they do, build trust, and create content for websites, ads, and social media.",
+    to: "/business-video",
+    cta: "Explore Business Video",
+    lane: "business",
+  },
+  {
+    icon: Home,
+    title: "Real Estate Media",
+    copy:
+      "Cinematic property videos, listing content, and social-ready media for Rhode Island agents, builders, property owners, and rental hosts.",
+    to: "/real-estate-media",
+    cta: "Explore Real Estate Media",
+    lane: "realEstate",
   },
   {
     icon: Heart,
-    title: "Weddings",
-    copy: "Wedding teasers, highlight films, and full-story edits for Rhode Island and New England couples.",
+    title: "Weddings & Events",
+    copy:
+      "Wedding films first, with polished event recap coverage still available for Rhode Island and New England celebrations, fundraisers, conferences, and live moments.",
     to: "/weddings",
-    cta: "View Wedding Packages",
+    cta: "Explore Weddings & Events",
     lane: "wedding",
-  },
-  {
-    icon: Briefcase,
-    title: "B2B Commercial",
-    copy: "Brand videos, testimonials, website content, reels, and campaign kits for Rhode Island businesses.",
-    to: "/for-businesses",
-    cta: "View Business Video Packages",
-    lane: "business",
   },
 ] as const;
 
 const TRUST_POINTS = [
-  "Rhode Island based video team",
-  "Filming since 2018",
-  "Direct communication from inquiry to delivery",
-  "Event recaps, artist visuals, business content, and wedding films",
-  "Clear starting ranges and custom quotes",
-  "Social-ready clips available",
+  "Warwick, Rhode Island based",
+  "Planning, filming, and editing under one roof",
+  "Built for websites, social media, ads, listings, and keepsake films",
+  "Clear starting investments and custom quotes",
+  "Cinematic content built with purpose",
 ];
 
-const ADDITIONAL_SERVICES = [
+const PACKAGE_PREVIEW = [
   {
-    title: "Reels & Short-Form",
-    copy: "Fast vertical edits for campaigns, launches, and social-ready moments.",
-    icon: Video,
-    to: "/packages#custom-projects",
-    cta: "View Custom Packages",
-    trackEvent: undefined,
+    title: "Business & Brand Video",
+    price: BUSINESS_PACKAGES[1].price,
+    copy: "Short-form, website, testimonial, and campaign-ready brand content.",
+    href: "/packages#business-video",
+    lane: "business",
+  },
+  {
+    title: "Real Estate Media",
+    price: REAL_ESTATE_PACKAGES[1].price,
+    copy: "Fast-turn property media and stronger agent-branding assets.",
+    href: "/packages#real-estate-media",
+    lane: "realEstate",
+  },
+  {
+    title: "Weddings & Events",
+    price: WEDDING_PACKAGES[1].price,
+    copy: "Wedding films lead this lane. Event recap coverage stays available by quote.",
+    href: "/packages#weddings-events",
+    lane: "wedding",
   },
   {
     title: "Artist Visuals",
-    copy: "Performance visuals and music-driven edits connected to the events lane.",
-    icon: Music,
-    to: "/events-recaps",
-    cta: "View Artist Visuals",
-    trackEvent: undefined,
-  },
-  {
-    title: "Editing",
-    copy: "Already have footage? Send it to us and we'll turn it into a polished reel, promo, recap, music video, highlight film, or business edit.",
-    icon: Scissors,
-    to: "/editing",
-    cta: "Get an Editing Quote",
-    trackEvent: "click_editing_packages_box",
-  },
-  {
-    title: "Custom Projects",
-    copy: "Documentary-style edits, personal stories, and unusual ideas quoted when the project fits.",
-    icon: Play,
-    to: "/packages#custom-projects",
-    cta: "View Custom Packages",
-    trackEvent: undefined,
+    price: MUSIC_PACKAGES[1].price,
+    copy: "Music videos, performance visuals, and release-ready creative cuts.",
+    href: "/packages#artist-visuals",
+    lane: "artist",
   },
 ] as const;
 
+const PROCESS = [
+  ["01", "Pick the lane", "Choose the service path that matches the project and where the video needs to perform."],
+  ["02", "Plan the scope", "We shape the coverage, deliverables, timeline, and quote before cameras go up."],
+  ["03", "Film with purpose", "Every shoot is built around real use: website trust, social rollout, ads, listings, or memories."],
+  ["04", "Deliver the assets", "You get polished video, platform-ready exports, and a clearer next step for using the content."],
+] as const;
+
 function HomePage() {
+  const artistProof = PORTFOLIO.filter((item) => item.category === "Artist Visuals").slice(0, 3);
+
   return (
     <SiteLayout>
       <section className="relative min-h-[88vh] flex items-center overflow-hidden">
@@ -149,64 +167,55 @@ function HomePage() {
           width={1920}
           height={1080}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/55 to-background" />
         <div className="absolute inset-0 film-grain" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
-          <p className="timecode mb-5">REC - RHODE ISLAND EVENT VIDEO - SINCE 2018</p>
-          <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] max-w-5xl text-balance">
-            Business, Events & Artist Visuals in Rhode Island
+          <p className="timecode mb-5">RHODE ISLAND VIDEO PRODUCTION</p>
+          <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] max-w-6xl text-balance">
+            Strategic Video Production for Rhode Island Brands, Real Estate, Weddings & Artists
           </h1>
           <p className="mt-6 text-base md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            Good Looks Media Group creates cinematic video for Rhode Island businesses, live
-            events, artists, parties, launches, performances, and social-ready campaigns. Real
-            moments, clean visuals, and edits built to promote, share, and remember.
-          </p>
-          <p className="mt-5 text-sm uppercase tracking-widest text-foreground">
-            Filming Rhode Island stories since 2018.
+            Good Looks Media Group plans, films, and edits cinematic video content for businesses,
+            real estate brands, wedding weekends, select event recap needs, and artist releases.
+            Real people. Real stories. Filmed with purpose.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               to="/contact"
               className="bg-primary text-primary-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:opacity-90 red-glow"
-              data-track-event="quote_cta_click"
-              data-service-lane="event"
+              data-track-event="cta_click_quote"
+              data-service-lane="general"
             >
-              Request a Quote
+              Get a Project Quote
             </Link>
             <a
-              href="#recent-work"
+              href="#service-lanes"
               className="border border-foreground/30 text-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:bg-foreground/10"
+              data-track-event="cta_click_services"
             >
-              View Recent Work
+              View Services
             </a>
           </div>
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section id="service-lanes" className="scroll-mt-32 py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="What we film"
-            title="Events first, with weddings and business video when you need them."
-            subtitle="Good Looks is built around live moments, artists, parties, local brands, and stories that deserve more than a random phone clip."
+            eyebrow="Main lanes"
+            title="Choose the lane that fits the outcome."
+            subtitle="The public site stays focused so each client type can find the right starting point quickly."
           />
           <div className="grid md:grid-cols-3 gap-5">
-            {SERVICE_CARDS.map(({ icon: Icon, title, copy, to, cta, primary, lane }) => (
+            {SERVICE_CARDS.map(({ icon: Icon, title, copy, to, cta, lane }) => (
               <Link
                 key={title}
                 to={to}
-                className={`group relative bg-card border rounded-2xl p-7 transition hover:-translate-y-1 ${
-                  primary ? "border-primary red-glow" : "border-border hover:border-primary"
-                }`}
-                data-track-event="quote_cta_click"
+                className="group relative glass-panel bento-tile p-7 transition hover:-translate-y-1 hover:border-primary"
+                data-track-event="select_service_lane"
                 data-service-lane={lane}
               >
-                {primary && (
-                  <span className="absolute -top-3 left-6 bg-primary text-primary-foreground text-xs uppercase tracking-widest px-3 py-1 rounded-full">
-                    Primary focus
-                  </span>
-                )}
                 <Icon className="w-8 h-8 text-primary" />
                 <h2 className="font-display text-3xl uppercase mt-5">{title}</h2>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{copy}</p>
@@ -219,38 +228,64 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-card/40 border-y border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+      <section className="py-8 border-y border-border bg-card/40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-wrap gap-3">
+          {TRUST_POINTS.map((point) => (
+            <span
+              key={point}
+              className="inline-flex items-center rounded-full border border-border px-4 py-2 text-xs uppercase tracking-widest text-muted-foreground"
+            >
+              {point}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
           <div>
-            <p className="timecode mb-3">LIVE MOMENTS</p>
-            <h2 className="font-display text-4xl md:text-6xl uppercase leading-[0.95]">
-              Real events deserve better than random phone clips.
-            </h2>
-          </div>
-          <div>
+            <SectionHeading
+              eyebrow="Strategy first"
+              title="We do not start with cameras. We start with the job the video needs to do."
+            />
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Whether it is a live show, party, pop-up, artist performance, or local event, the
-              moment goes fast. We help you turn it into polished video that can be shared,
-              promoted, remembered, and reused.
+              Business clients need trust-building assets. Agents need listing attention and agent
+              branding. Couples need a film worth keeping. Artists need visuals that help the
+              release travel. The production plan changes with the goal.
             </p>
             <Link
-              to="/contact"
-              className="mt-7 inline-flex bg-primary text-primary-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:opacity-90"
-              data-track-event="quote_cta_click"
-              data-service-lane="event"
+              to="/business-video"
+              className="mt-7 inline-flex items-center gap-2 text-primary uppercase tracking-widest text-sm hover:underline"
+              data-track-event="select_service_lane"
+              data-service-lane="business"
             >
-              Request a Quote
+              See how the business lane works <ArrowRight className="w-4 h-4" />
             </Link>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              ["Plan", "Scope the message, audience, location, and final deliverables before the shoot."],
+              ["Film", "Capture only what actually supports the listing, brand story, event recap, or film."],
+              ["Edit", "Deliver platform-ready cuts that are easier to use in the real world, not just pretty to watch."],
+            ].map(([title, copy]) => (
+              <article key={title} className="glass-panel rounded-2xl p-6">
+                <Sparkles className="w-7 h-7 text-primary" />
+                <h3 className="font-display text-2xl uppercase mt-4">{title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section
-        id="recent-work"
-        className="scroll-mt-32 py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-          <SectionHeading eyebrow="Recent work" title="See how we shoot." align="center" />
+      <section id="recent-work" className="scroll-mt-32 py-20 md:py-28 bg-card/40 border-y border-border">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Curated proof"
+            title="Start with the reel. Public case studies are curated by approval."
+            subtitle="The reel shows range and production style. Lane-specific proof is being tightened so every public example actually helps the right buyer make a decision."
+            align="center"
+          />
           <div className="relative aspect-video rounded-2xl overflow-hidden border border-border bg-black red-glow">
             <iframe
               src="https://www.youtube.com/embed/0q_7tljwQHY?si=uum0jp0_yTGuWCrr&rel=0&modestbranding=1"
@@ -264,72 +299,54 @@ function HomePage() {
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
-              to="/events-recaps"
+              to="/business-video"
               className="inline-flex items-center gap-2 text-primary uppercase tracking-widest text-sm hover:underline"
+              data-track-event="select_service_lane"
+              data-service-lane="business"
             >
-              Event recap video Rhode Island <ArrowRight className="w-4 h-4" />
+              Business Video <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              to="/packages"
+              to="/real-estate-media"
               className="inline-flex items-center gap-2 text-primary uppercase tracking-widest text-sm hover:underline"
+              data-track-event="select_service_lane"
+              data-service-lane="realEstate"
             >
-              Rhode Island event videography packages <ArrowRight className="w-4 h-4" />
+              Real Estate Media <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/weddings"
+              className="inline-flex items-center gap-2 text-primary uppercase tracking-widest text-sm hover:underline"
+              data-track-event="select_service_lane"
+              data-service-lane="wedding"
+            >
+              Weddings & Events <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {SHOW_PORTFOLIO && (
-        <section className="py-20 md:py-28 bg-card/40 border-y border-border">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-end mb-10 gap-4 flex-wrap">
-              <SectionHeading eyebrow="Selected work" title="Artist visuals and video work." />
-              <Link
-                to="/work"
-                className="text-primary uppercase tracking-widest text-sm hover:underline whitespace-nowrap"
-              >
-                View Recent Work
-              </Link>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {PORTFOLIO.slice(0, 3).map((item) => (
-                <PortfolioCard key={item.id} item={item} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <SectionHeading eyebrow="Why Good Looks" title="Why people book Good Looks" />
-            <ul className="grid sm:grid-cols-2 gap-3">
-              {TRUST_POINTS.map((point) => (
-                <li key={point} className="bg-card border border-border rounded-xl p-4 flex gap-3">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span className="text-sm">{point}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Creative lane"
+            title="Artist Visuals & Creative Projects"
+            subtitle="Music videos, performance visuals, creative promos, and custom projects remain part of the Good Looks identity. This work shows our visual edge, but it lives in its own lane so business clients, couples, agents, and artists can each find the proof that fits them."
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {artistProof.map((item) => (
+              <PortfolioCard key={item.id} item={item} />
+            ))}
           </div>
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border bg-card">
-            <div className="absolute inset-0">
-              <img
-                src={heroImage}
-                alt="Good Looks Media Group cinematic production still"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-            <div className="absolute inset-0 film-grain" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <p className="timecode mb-2">GOOD LOOKS MEDIA</p>
-              <p className="font-display text-3xl md:text-4xl uppercase">
-                Real events. Real energy. Filmed right.
-              </p>
-            </div>
+          <div className="mt-8">
+            <Link
+              to="/music-videos"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md uppercase tracking-widest text-sm font-semibold hover:opacity-90"
+              data-track-event="select_service_lane"
+              data-service-lane="artist"
+            >
+              Explore Artist Visuals <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -337,26 +354,44 @@ function HomePage() {
       <section className="py-20 md:py-28 bg-card/40 border-y border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="More Good Looks"
-            title="Custom stories stay available, lower on the list."
-            subtitle="Need something outside the main lanes? We still quote custom stories, reels, documentary-style edits, and unusual ideas when the project fits."
+            eyebrow="Pricing preview"
+            title="Clear starting investments. Custom quotes based on scope."
+            subtitle="The prices shown here are the most representative public anchors for each lane, not the smallest possible scope."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {ADDITIONAL_SERVICES.map(({ title, copy, icon: Icon, to, cta, trackEvent }) => (
-              <Link
-                key={title}
-                to={to}
-                className="bg-card border border-border rounded-xl p-6 hover:border-primary transition"
-                data-track-event={trackEvent}
-                data-service-lane={trackEvent ? "editing" : undefined}
+            {PACKAGE_PREVIEW.map((item) => (
+              <a
+                key={item.title}
+                href={item.href}
+                className="glass-panel rounded-2xl p-6 hover:border-primary transition"
+                data-track-event="cta_click_pricing"
+                data-service-lane={item.lane}
               >
-                <Icon className="w-7 h-7 text-primary" />
+                <p className="timecode">{item.title}</p>
+                <p className="font-display text-3xl text-primary mt-3">{item.price}</p>
+                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{item.copy}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-foreground">
+                  View pricing <ArrowRight className="w-4 h-4" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Process"
+            title="A calmer process from first message to final delivery."
+          />
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {PROCESS.map(([step, title, copy]) => (
+              <article key={step} className="bg-card border border-border rounded-2xl p-6">
+                <p className="font-display text-5xl text-primary">{step}</p>
                 <h3 className="font-display text-2xl uppercase mt-4">{title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{copy}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-foreground">
-                  {cta} <ArrowRight className="w-4 h-4" />
-                </span>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
@@ -366,27 +401,29 @@ function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="timecode mb-4">READY WHEN YOU ARE</p>
+          <Clapperboard className="mx-auto mb-6 h-10 w-10 text-primary" />
           <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.95] text-balance">
-            Ready to film your event?
+            Ready to build the next film?
           </h2>
           <p className="mt-5 text-muted-foreground text-lg max-w-2xl mx-auto">
-            Tell us the date, location, type of event, and the kind of video you need. We will help
-            you choose the right coverage and send a custom quote.
+            Tell us the service lane, timing, location, and the result you need. We will shape the
+            scope and send a custom quote.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link
               to="/contact"
               className="bg-primary text-primary-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold red-glow"
-              data-track-event="quote_cta_click"
-              data-service-lane="event"
+              data-track-event="cta_click_quote"
+              data-service-lane="general"
             >
-              Request a Quote
+              Get a Project Quote
             </Link>
             <Link
               to="/packages"
               className="border border-foreground/30 px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold"
+              data-track-event="cta_click_pricing"
             >
-              View Packages
+              View Pricing
             </Link>
           </div>
         </div>

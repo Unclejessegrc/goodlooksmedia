@@ -2,60 +2,123 @@ export interface PortfolioItem {
   id: string;
   title: string;
   category: string;
+  projectType: string;
+  goal: string;
   description: string;
-  deliverables?: string;
+  deliverables: string;
+  bestUse: string;
   youtubeId?: string;
   youtubeUrl?: string;
   thumbnailUrl?: string;
   embedUrl?: string;
   autoplayEmbedUrl?: string;
+  uploadDate?: string;
+  duration?: string;
+  contentUrl?: string;
   iframeTitle?: string;
   ctaLabel?: string;
-  // Local poster image (fallback color gradient if absent)
   posterGradient: string;
 }
 
-export const CATEGORIES = [
-  "All",
-  "Weddings",
-  "Business",
-  "Music Videos",
-  "Events",
-  "Live Shows",
-  "Parties",
-  "Pets",
-  "Reels",
-  "Commercials",
-] as const;
+export const CATEGORIES = ["All", "Director Reel", "Artist Visuals"] as const;
 
 export const PORTFOLIO: PortfolioItem[] = [
   {
     id: "director-reel",
-    title: "Director Reel",
-    category: "Reels",
-    description: "A fast look at the Good Looks Media Group style, pacing, and visual direction.",
-    deliverables: "Director reel, pacing sample, visual style preview",
+    title: "Good Looks Director Reel",
+    category: "Director Reel",
+    projectType: "Director Reel",
+    goal: "Preview the pacing, tone, and visual range behind future Good Looks commissions.",
+    description: "A fast look at the Good Looks style, pacing, and visual direction.",
+    deliverables: "Director reel, style preview, production range sample",
+    bestUse: "Best for seeing the overall cinematic approach before requesting a quote.",
     youtubeId: "0q_7tljwQHY",
     youtubeUrl: "https://youtu.be/0q_7tljwQHY",
     thumbnailUrl: "https://img.youtube.com/vi/0q_7tljwQHY/maxresdefault.jpg",
     embedUrl: "https://www.youtube.com/embed/0q_7tljwQHY?si=FmZMZDjSTBfAJCB5",
-    autoplayEmbedUrl: "https://www.youtube.com/embed/0q_7tljwQHY?si=FmZMZDjSTBfAJCB5&autoplay=1&rel=0&modestbranding=1",
+    autoplayEmbedUrl:
+      "https://www.youtube.com/embed/0q_7tljwQHY?si=FmZMZDjSTBfAJCB5&autoplay=1&rel=0&modestbranding=1",
+    contentUrl: "https://youtu.be/0q_7tljwQHY",
+    uploadDate: "2024-01-01",
     iframeTitle: "Good Looks Media Group Director Reel",
-    ctaLabel: "I want something like this",
+    ctaLabel: "Watch the reel",
     posterGradient: "from-red-900 via-zinc-900 to-black",
   },
-  { id: "music-dwhjfxguif0", title: "Good Looks Music Video 01", category: "Music Videos", description: "Good Looks Media Group music video.", deliverables: "Final music video, artist visual, promo cutdowns", youtubeId: "DwHJFxguIf0", youtubeUrl: "https://youtu.be/DwHJFxguIf0", thumbnailUrl: "https://img.youtube.com/vi/DwHJFxguIf0/maxresdefault.jpg", embedUrl: "https://www.youtube.com/embed/DwHJFxguIf0", posterGradient: "from-red-900 via-zinc-900 to-black" },
-  { id: "music-bxzbr0gob9e", title: "Good Looks Music Video 02", category: "Music Videos", description: "Good Looks Media Group music video.", deliverables: "Final music video, artist visual, promo cutdowns", youtubeId: "BxzbR0Gob9E", youtubeUrl: "https://youtu.be/BxzbR0Gob9E", thumbnailUrl: "https://img.youtube.com/vi/BxzbR0Gob9E/maxresdefault.jpg", embedUrl: "https://www.youtube.com/embed/BxzbR0Gob9E", posterGradient: "from-red-800 via-zinc-900 to-black" },
-  { id: "music-avzzb-heus0", title: "Good Looks Music Video 03", category: "Music Videos", description: "Good Looks Media Group music video.", deliverables: "Final music video, artist visual, promo cutdowns", youtubeId: "aVzzB-HeUs0", youtubeUrl: "https://youtu.be/aVzzB-HeUs0", thumbnailUrl: "https://img.youtube.com/vi/aVzzB-HeUs0/maxresdefault.jpg", embedUrl: "https://www.youtube.com/embed/aVzzB-HeUs0", posterGradient: "from-rose-800 via-zinc-900 to-black" },
-  { id: "music-s3klfozrsv0", title: "Good Looks Music Video 04", category: "Music Videos", description: "Good Looks Media Group music video.", deliverables: "Final music video, artist visual, promo cutdowns", youtubeId: "S3KlFozRSv0", youtubeUrl: "https://youtu.be/S3KlFozRSv0", thumbnailUrl: "https://img.youtube.com/vi/S3KlFozRSv0/maxresdefault.jpg", embedUrl: "https://www.youtube.com/embed/S3KlFozRSv0", posterGradient: "from-purple-900 via-zinc-900 to-black" },
-  { id: "music-qh3fwnlitnm", title: "Good Looks Music Video 05", category: "Music Videos", description: "Good Looks Media Group music video.", deliverables: "Final music video, artist visual, promo cutdowns", youtubeId: "QH3FwnLITnM", youtubeUrl: "https://youtu.be/QH3FwnLITnM", thumbnailUrl: "https://img.youtube.com/vi/QH3FwnLITnM/maxresdefault.jpg", embedUrl: "https://www.youtube.com/embed/QH3FwnLITnM", posterGradient: "from-fuchsia-900 via-zinc-900 to-black" },
-  { id: "p1", title: "Sarah & Mike — Newport Wedding", category: "Weddings", description: "A coastal Rhode Island wedding film.", deliverables: "Highlight film, ceremony moments, social teaser", posterGradient: "from-rose-900 via-zinc-900 to-black" },
-  { id: "p2", title: "Northeast Auto — Brand Spot", category: "Business", description: "Service explainer + social cutdowns.", deliverables: "Brand spot, vertical clips, web delivery", posterGradient: "from-zinc-700 via-zinc-900 to-black" },
-  { id: "p4", title: "Providence Block Party Recap", category: "Events", description: "Summer block party recap film.", deliverables: "Event recap, vertical clip, online delivery", posterGradient: "from-amber-900 via-zinc-900 to-black" },
-  { id: "p5", title: "The Strand — Live Show", category: "Live Shows", description: "Multi-cam live show coverage.", deliverables: "Live recap, performance moments, promo clip", posterGradient: "from-purple-900 via-zinc-900 to-black" },
-  { id: "p6", title: "Reels — Q3", category: "Reels", description: "Vertical social rollout for a launch.", deliverables: "Short-form clips, captions, social formats", posterGradient: "from-emerald-900 via-zinc-900 to-black" },
-  { id: "p8", title: "Cranston Birthday Party", category: "Parties", description: "Birthday party recap.", deliverables: "Party recap, vertical social clip, online delivery", posterGradient: "from-orange-900 via-zinc-900 to-black" },
-  { id: "p9", title: "Moose — Adoption Film", category: "Pets", description: "Adoption-day mini documentary.", deliverables: "Mini film, social clip, keepsake edit", posterGradient: "from-yellow-900 via-zinc-900 to-black" },
-  { id: "p11", title: "Coastal Coffee — TV Spot", category: "Commercials", description: "30-second commercial spot.", deliverables: "30-second spot, social cutdowns, web delivery", posterGradient: "from-stone-700 via-zinc-900 to-black" },
-  { id: "p12", title: "James & Tia — Highlight", category: "Weddings", description: "Highlight film, full day.", deliverables: "Highlight film, key moments, social teaser", posterGradient: "from-fuchsia-900 via-zinc-900 to-black" },
+  {
+    id: "artist-dwhjfxguif0",
+    title: "Artist Performance Visual",
+    category: "Artist Visuals",
+    projectType: "Artist Visuals",
+    goal: "Create a polished performance-led release asset for social, YouTube, and launch momentum.",
+    description: "An anonymized artist visual focused on presence, pacing, and repeatable cutdowns.",
+    deliverables: "Final music video, teaser cut, vertical promo clips",
+    bestUse: "Best for a single release, performance rollout, or artist announcement.",
+    youtubeId: "DwHJFxguIf0",
+    youtubeUrl: "https://youtu.be/DwHJFxguIf0",
+    thumbnailUrl: "https://img.youtube.com/vi/DwHJFxguIf0/maxresdefault.jpg",
+    embedUrl: "https://www.youtube.com/embed/DwHJFxguIf0",
+    contentUrl: "https://youtu.be/DwHJFxguIf0",
+    uploadDate: "2024-01-01",
+    posterGradient: "from-red-900 via-zinc-900 to-black",
+  },
+  {
+    id: "artist-bxzbr0gob9e",
+    title: "Release Promo Visual",
+    category: "Artist Visuals",
+    projectType: "Artist Visuals",
+    goal: "Build a cleaner release-facing visual that can live across YouTube, Instagram, and promo cycles.",
+    description: "An anonymized release visual built for attention, replay value, and campaign cutdowns.",
+    deliverables: "Lead visual, promo edit, social-ready exports",
+    bestUse: "Best for artists who need one visual to anchor a song drop or rollout.",
+    youtubeId: "BxzbR0Gob9E",
+    youtubeUrl: "https://youtu.be/BxzbR0Gob9E",
+    thumbnailUrl: "https://img.youtube.com/vi/BxzbR0Gob9E/maxresdefault.jpg",
+    embedUrl: "https://www.youtube.com/embed/BxzbR0Gob9E",
+    posterGradient: "from-red-800 via-zinc-900 to-black",
+  },
+  {
+    id: "artist-avzzb-heus0",
+    title: "Concept Music Visual",
+    category: "Artist Visuals",
+    projectType: "Artist Visuals",
+    goal: "Pair performance footage with stronger style cues so the visual feels more like a launch asset than a documentation clip.",
+    description: "An anonymized concept visual built around atmosphere, performance, and sharper pacing.",
+    deliverables: "Concept video, color-finished master, promo cutdown",
+    bestUse: "Best for artists who want a more intentional visual identity around a song.",
+    youtubeId: "aVzzB-HeUs0",
+    youtubeUrl: "https://youtu.be/aVzzB-HeUs0",
+    thumbnailUrl: "https://img.youtube.com/vi/aVzzB-HeUs0/maxresdefault.jpg",
+    embedUrl: "https://www.youtube.com/embed/aVzzB-HeUs0",
+    posterGradient: "from-rose-800 via-zinc-900 to-black",
+  },
+  {
+    id: "artist-s3klfozrsv0",
+    title: "Studio-Led Artist Edit",
+    category: "Artist Visuals",
+    projectType: "Artist Visuals",
+    goal: "Turn a controlled performance setup into something cinematic enough for a full release push.",
+    description: "An anonymized studio-led visual focused on cleaner framing, rhythm, and polish.",
+    deliverables: "Main visual, performance cut, promo exports",
+    bestUse: "Best for artists who want a stronger look without a large-location production.",
+    youtubeId: "S3KlFozRSv0",
+    youtubeUrl: "https://youtu.be/S3KlFozRSv0",
+    thumbnailUrl: "https://img.youtube.com/vi/S3KlFozRSv0/maxresdefault.jpg",
+    embedUrl: "https://www.youtube.com/embed/S3KlFozRSv0",
+    posterGradient: "from-purple-900 via-zinc-900 to-black",
+  },
+  {
+    id: "artist-qh3fwnlitnm",
+    title: "Campaign Teaser Visual",
+    category: "Artist Visuals",
+    projectType: "Artist Visuals",
+    goal: "Give an artist a sharper teaser asset that can support early campaign momentum and repeatable short-form content.",
+    description: "An anonymized teaser-driven visual with quicker pacing and stronger social reuse.",
+    deliverables: "Teaser visual, promo cutdowns, social-ready exports",
+    bestUse: "Best for artists stacking content around a release window.",
+    youtubeId: "QH3FwnLITnM",
+    youtubeUrl: "https://youtu.be/QH3FwnLITnM",
+    thumbnailUrl: "https://img.youtube.com/vi/QH3FwnLITnM/maxresdefault.jpg",
+    embedUrl: "https://www.youtube.com/embed/QH3FwnLITnM",
+    posterGradient: "from-fuchsia-900 via-zinc-900 to-black",
+  },
 ];

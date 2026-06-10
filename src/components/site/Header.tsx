@@ -4,10 +4,13 @@ import { Menu, X, Phone } from "lucide-react";
 import { CONTACT } from "@/data/contact";
 
 const NAV = [
-  { to: "/events-recaps", label: "Events & Music Video", primary: true },
-  { to: "/weddings", label: "Weddings" },
-  { to: "/for-businesses", label: "B2B Commercial" },
-  { to: "/packages", label: "Packages" },
+  { to: "/", label: "Home" },
+  { to: "/business-video", label: "Business Video" },
+  { to: "/real-estate-media", label: "Real Estate" },
+  { to: "/weddings", label: "Weddings & Events" },
+  { to: "/music-videos", label: "Artist Visuals" },
+  { to: "/packages", label: "Pricing" },
+  { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -41,11 +44,7 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
-              className={`text-xs uppercase tracking-wider transition ${
-                "primary" in n && n.primary
-                  ? "text-foreground font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className="text-xs uppercase tracking-wider text-muted-foreground transition hover:text-foreground"
               activeProps={{ className: "text-primary" }}
             >
               {n.label}
@@ -57,17 +56,17 @@ export function Header() {
           <a
             href={CONTACT.telHref}
             className="text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground flex items-center gap-2 transition"
-            data-track-event="phone_click"
+            data-track-event="click_call"
           >
             <Phone className="w-4 h-4" /> Call
           </a>
           <Link
             to="/contact"
             className="inline-flex items-center bg-primary text-primary-foreground px-4 py-2 rounded-md text-xs font-medium uppercase tracking-wider hover:opacity-90 red-glow"
-            data-track-event="quote_cta_click"
-            data-service-lane="event"
+            data-track-event="cta_click_quote"
+            data-service-lane="general"
           >
-            Request a Quote
+            Get a Quote
           </Link>
         </div>
 
@@ -88,9 +87,7 @@ export function Header() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className={`text-base py-3 px-2 border-b border-border ${
-                  "primary" in n && n.primary ? "text-primary font-semibold" : "text-foreground"
-                }`}
+                className="text-base py-3 px-2 border-b border-border text-foreground"
               >
                 {n.label}
               </Link>
@@ -99,7 +96,7 @@ export function Header() {
               href={CONTACT.telHref}
               onClick={() => setOpen(false)}
               className="text-base py-3 px-2 border-b border-border text-foreground flex items-center gap-2"
-              data-track-event="phone_click"
+              data-track-event="click_call"
             >
               <Phone className="w-4 h-4" /> Call
             </a>
@@ -107,10 +104,10 @@ export function Header() {
               to="/contact"
               onClick={() => setOpen(false)}
               className="mt-3 bg-primary text-primary-foreground text-center py-3 rounded-md font-medium uppercase tracking-wider"
-              data-track-event="quote_cta_click"
-              data-service-lane="event"
+              data-track-event="cta_click_quote"
+              data-service-lane="general"
             >
-              Request a Quote
+              Get a Quote
             </Link>
           </nav>
         </div>
