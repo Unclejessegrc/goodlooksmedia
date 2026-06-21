@@ -51,25 +51,25 @@ const EVENT_TYPES = [
 export const Route = createFileRoute("/weddings")({
   head: () => ({
     meta: [
-      { title: "Wedding & Event Videography in Rhode Island and New England | Good Looks Media Group" },
+      { title: "Rhode Island Wedding Videographer | GLMG" },
       {
         name: "description",
         content:
-          "Wedding and event videography in Rhode Island and New England. Wedding films first, with event recaps for conferences, fundraisers, parties, and performances available by quote.",
+          "Rhode Island wedding videographer for wedding films, highlight films, and event coverage by quote. Warwick-based GLMG serves Rhode Island and nearby New England.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Wedding & Event Videography in Rhode Island and New England | Good Looks Media Group" },
+      { property: "og:title", content: "Rhode Island Wedding Videographer | GLMG" },
       {
         property: "og:description",
         content:
-          "Wedding films first, with event recaps for conferences, fundraisers, parties, and performances available by quote.",
+          "Rhode Island wedding films and event coverage by quote.",
       },
       { property: "og:url", content: absoluteUrl("/weddings") },
-      { name: "twitter:title", content: "Wedding & Event Videography in Rhode Island and New England | Good Looks Media Group" },
+      { name: "twitter:title", content: "Rhode Island Wedding Videographer | GLMG" },
       {
         name: "twitter:description",
         content:
-          "Wedding films first, with event recaps for conferences, fundraisers, parties, and performances available by quote.",
+          "Rhode Island wedding films and event coverage by quote.",
       },
     ],
     links: [
@@ -137,7 +137,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="wedding"
             >
-              Check Wedding Availability
+              Check Availability for Your Date
             </Link>
             <Link
               to="/contact"
@@ -146,7 +146,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="event"
             >
-              Plan an Event Film
+              Request a Custom Quote
             </Link>
           </div>
         </div>
@@ -271,7 +271,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="event"
             >
-              Check Event Availability <ArrowRight className="w-4 h-4" />
+              Request a Custom Quote <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -310,7 +310,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="wedding"
             >
-              Check Wedding Availability
+              Check Availability for Your Date
             </Link>
             <Link
               to="/contact"
@@ -319,7 +319,7 @@ function WeddingsPage() {
               data-track-event="cta_click_quote"
               data-service-lane="event"
             >
-              Plan an Event Film
+              Request a Custom Quote
             </Link>
           </div>
         </div>
