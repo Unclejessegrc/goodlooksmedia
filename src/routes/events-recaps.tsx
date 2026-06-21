@@ -5,17 +5,17 @@ import { absoluteUrl, serviceJsonLd } from "@/data/seo";
 export const Route = createFileRoute("/events-recaps")({
   head: () => ({
     meta: [
-      { title: "Event Videography in Rhode Island | Good Looks Media Group" },
+      { title: "Event Video Production Rhode Island | GLMG" },
       {
         name: "description",
         content:
-          "Event videography now lives inside the updated Weddings & Events lane, where wedding films remain primary and event recap coverage stays available by quote.",
+          "Event video production in Rhode Island for corporate events, brand activations, nonprofit galas, private events, and live event recaps.",
       },
-      { property: "og:title", content: "Event Videography in Rhode Island | Good Looks Media Group" },
+      { property: "og:title", content: "Event Video Production Rhode Island | GLMG" },
       {
         property: "og:description",
         content:
-          "Event videography now lives inside the updated Weddings & Events lane.",
+          "Event video production in Rhode Island for polished recaps and live coverage.",
       },
       { property: "og:url", content: absoluteUrl("/events-recaps") },
     ],
@@ -44,11 +44,11 @@ function EventsAliasPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <p className="timecode mb-4">EVENT FILMS</p>
           <h1 className="font-display text-5xl md:text-7xl uppercase leading-[0.95]">
-            Event videography now lives inside Weddings & Events.
+            Event video is available by quote.
           </h1>
           <p className="mt-5 text-muted-foreground text-lg max-w-2xl">
-            Weddings stay the primary focus of that lane, but event recap coverage for conferences,
-            fundraisers, parties, and performances is still available by quote.
+            Corporate events, brand activations, nonprofit galas, private events, and live event
+            recaps are still available by quote.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -67,7 +67,7 @@ function EventsAliasPage() {
               data-track-event="cta_click_quote"
               data-service-lane="event"
             >
-              Request an Event Quote
+              Request a Custom Quote
             </Link>
           </div>
         </div>
