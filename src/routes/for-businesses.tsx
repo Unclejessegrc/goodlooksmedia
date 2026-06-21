@@ -5,13 +5,13 @@ import { absoluteUrl, serviceJsonLd } from "@/data/seo";
 export const Route = createFileRoute("/for-businesses")({
   head: () => ({
     meta: [
-      { title: "Business Video Production in Rhode Island | Good Looks Media Group" },
+      { title: "Commercial Video Production Rhode Island | GLMG" },
       {
         name: "description",
         content:
-          "Business video production in Rhode Island for websites, social media, ads, testimonials, and brand visibility.",
+          "Commercial video production in Rhode Island for websites, social media, ads, testimonials, and brand visibility.",
       },
-      { property: "og:title", content: "Business Video Production in Rhode Island | Good Looks Media Group" },
+      { property: "og:title", content: "Commercial Video Production Rhode Island | GLMG" },
       {
         property: "og:description",
         content:
@@ -66,7 +66,7 @@ function BusinessVideoAliasPage() {
               data-track-event="cta_click_quote"
               data-service-lane="business"
             >
-              Request a Quote
+          Get a Project Quote
             </Link>
           </div>
         </div>
