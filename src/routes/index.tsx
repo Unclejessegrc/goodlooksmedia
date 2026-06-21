@@ -31,26 +31,26 @@ import heroImage from "@/assets/hero.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Good Looks Media Group | Rhode Island Video Production" },
+      { title: "Video Production Warwick, RI | Good Looks Media Group" },
       {
         name: "description",
         content:
-          "Strategic Rhode Island video production for business video, real estate media, weddings, events, and artist visuals. Built for websites, social media, ads, and long-term brand visibility.",
+          "Warwick, RI video production for Rhode Island businesses, agents, couples, and artists. Planning, filming, and editing for the platforms where audiences watch.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Good Looks Media Group | Rhode Island Video Production" },
+      { property: "og:title", content: "Video Production Warwick, RI | Good Looks Media Group" },
       {
         property: "og:description",
         content:
-          "Strategic Rhode Island video production for business video, real estate media, weddings, events, and artist visuals.",
+          "Warwick, RI video production for Rhode Island businesses, agents, couples, and artists.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: absoluteUrl("/") },
-      { name: "twitter:title", content: "Good Looks Media Group | Rhode Island Video Production" },
+      { name: "twitter:title", content: "Video Production Warwick, RI | Good Looks Media Group" },
       {
         name: "twitter:description",
         content:
-          "Strategic Rhode Island video production for business video, real estate media, weddings, events, and artist visuals.",
+          "Warwick, RI video production for Rhode Island businesses, agents, couples, and artists.",
       },
     ],
     links: [
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/")({
             pageJsonLd({
               name: "Good Looks Media Group Rhode Island Video Production",
               description:
-                "Strategic video production for Rhode Island brands, real estate, weddings, events, and artists.",
+                "Warwick, RI video production for businesses, agents, couples, and artists.",
               path: "/",
             }),
             videoObjectJsonLd({
@@ -89,31 +89,22 @@ export const Route = createFileRoute("/")({
 
 const SERVICE_CARDS = [
   {
-    icon: Briefcase,
-    title: "B2B Commercial",
-    copy:
-      "Story-driven videos for local businesses, nonprofits, and brands that need to explain what they do, build trust, and create content for websites, ads, and social media.",
-    to: "/business-video",
-    cta: "View Business Video Packages",
-    lane: "business",
-  },
-  {
-    icon: PartyPopper,
-    title: "Events & Music Video",
-    copy:
-      "Live shows, parties, artist performances, event recaps, release promos, music visuals, and social-ready clips.",
-    to: "/music-videos",
-    cta: "View Event & Music Packages",
-    lane: "artist",
-  },
-  {
     icon: Home,
     title: "Real Estate Media",
     copy:
-      "Cinematic property videos, listing content, and social-ready media for Rhode Island agents, builders, property owners, and rental hosts.",
+      "Listing videos and property content for Rhode Island agents, builders, and property owners.",
     to: "/real-estate-media",
-    cta: "View Real Estate Pricing",
+    cta: "Book a Listing Shoot",
     lane: "realEstate",
+  },
+  {
+    icon: Briefcase,
+    title: "Business & Brand Video",
+    copy:
+      "Story-driven videos for local businesses, nonprofits, and brands that need to explain what they do, build trust, and create content for websites, ads, and social media.",
+    to: "/business-video",
+    cta: "Get a Project Quote",
+    lane: "business",
   },
   {
     icon: Heart,
@@ -121,47 +112,65 @@ const SERVICE_CARDS = [
     copy:
       "Premium wedding films for Rhode Island and New England couples who want the weekend preserved as a legacy artifact.",
     to: "/weddings",
-    cta: "Check Wedding Availability",
+    cta: "Check Availability for Your Date",
     lane: "wedding",
+  },
+  {
+    icon: PartyPopper,
+    title: "Event Video",
+    copy:
+      "Corporate events, brand activations, nonprofit galas, private events, and live event recaps.",
+    to: "/events-recaps",
+    cta: "Request a Custom Quote",
+    lane: "event",
+  },
+  {
+    icon: Sparkles,
+    title: "Artist Visuals",
+    copy:
+      "Music videos, release promos, performance films, and social clips for artists who need visuals that travel.",
+    to: "/music-videos",
+    cta: "Pitch Your Track",
+    lane: "artist",
   },
 ] as const;
 
-const TRUST_POINTS = [
-  "Warwick, Rhode Island based",
-  "Planning, filming, and editing under one roof",
-  "Built for websites, social media, ads, and event recaps",
-  "Clear starting investments and custom quotes",
-  "Cinematic content built with purpose",
-];
+const TRUST_LINE =
+  "Two-person team, Warwick based. Planning, filming, and editing under one roof. You talk to the people who shoot it. Clear starting investments and custom quotes.";
 
 const PACKAGE_PREVIEW = [
+  {
+    title: "Real Estate Listing Video Package",
+    price: REAL_ESTATE_PACKAGES[0].price,
+    copy:
+      "Listing videos and property content for Rhode Island agents, builders, and property owners. Designed to help listings stand out online with clean walkthrough footage, exterior coverage, social-ready edits, and fast turnaround.",
+    href: "/contact?projectType=Real%20Estate%20Media",
+    lane: "realEstate",
+    cta: "Book a Listing Shoot",
+  },
   {
     title: "Business & Brand Video",
     price: BUSINESS_PACKAGES[0].price,
     copy: "Short-form, website, testimonial, and campaign-ready brand content.",
-    href: "/packages#business-video",
+    href: "/contact?projectType=Business%20%26%20Brand%20Video",
     lane: "business",
-  },
-  {
-    title: "Real Estate Media",
-    price: REAL_ESTATE_PACKAGES[0].price,
-    copy: "Fast-turn property media and stronger agent-branding assets.",
-    href: "/packages#real-estate-media",
-    lane: "realEstate",
+    cta: "Get a Project Quote",
   },
   {
     title: "Weddings & Events",
     price: WEDDING_PACKAGES[0].price,
     copy: "Wedding films first, with event recap coverage available by quote.",
-    href: "/packages#weddings-events",
+    href: "/contact?projectType=Wedding%20Film",
     lane: "wedding",
+    cta: "Check Availability for Your Date",
   },
   {
     title: "Artist Visuals",
     price: MUSIC_PACKAGES[0].price,
     copy: "Music videos, performance visuals, and release-ready creative cuts.",
-    href: "/packages#artist-visuals",
+    href: "/contact?projectType=Artist%20Visuals",
     lane: "artist",
+    cta: "Pitch Your Track",
   },
 ] as const;
 
@@ -189,15 +198,14 @@ function HomePage() {
         <div className="absolute inset-0 film-grain" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
-          <p className="timecode mb-5">RHODE ISLAND VIDEO PRODUCTION</p>
+          <p className="timecode mb-5">WARWICK, RHODE ISLAND VIDEO PRODUCTION</p>
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl uppercase leading-[0.95] max-w-5xl text-balance">
-            Strategic Video Production for Rhode Island Brands, Events, Real Estate, Weddings &
-            Artists
+            Video Built With a Plan Behind It
           </h1>
           <p className="mt-6 text-base md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            Good Looks Media Group plans, films, and edits cinematic video content built for
-            websites, social media, ads, events, and long-term brand visibility. Real people. Real
-            stories. Filmed with purpose.
+            Good Looks Media Group plans, films, and edits video for Rhode Island businesses,
+            agents, couples, and artists. Built for the platforms where your audience actually
+            watches.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
@@ -209,11 +217,11 @@ function HomePage() {
               Get a Project Quote
             </Link>
             <a
-              href="#service-lanes"
+              href="#process"
               className="border border-foreground/30 text-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:bg-foreground/10"
               data-track-event="cta_click_services"
             >
-              View Services
+              See How We Work
             </a>
           </div>
         </div>
@@ -248,15 +256,8 @@ function HomePage() {
       </section>
 
       <section className="py-8 border-y border-border bg-card/40">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-wrap gap-3">
-          {TRUST_POINTS.map((point) => (
-            <span
-              key={point}
-              className="inline-flex items-center rounded-full border border-border px-4 py-2 text-xs uppercase tracking-widest text-muted-foreground"
-            >
-              {point}
-            </span>
-          ))}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{TRUST_LINE}</p>
         </div>
       </section>
 
@@ -265,12 +266,12 @@ function HomePage() {
           <div>
             <SectionHeading
               eyebrow="Strategy first"
-              title="We do not start with cameras. We start with the job the video needs to do."
+              title="We do not start with cameras."
             />
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Business clients need trust-building assets. Agents need listing attention and agent
-              branding. Couples need a film worth keeping. Artists need visuals that help the
-              release travel. The production plan changes with the goal.
+              We start with the job the video needs to do. Business clients need trust. Agents need
+              listing attention. Couples need a film worth keeping. Artists need visuals that
+              travel. The plan changes with the goal.
             </p>
             <Link
               to="/business-video"
@@ -301,8 +302,8 @@ function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Curated proof"
-            title="Start with the reel. Public video samples are curated by approval."
-            subtitle="The reel shows range and production style. Lane-specific proof is being tightened so every public example helps the right buyer make a decision."
+            title="Watch the reel. It shows our range."
+            subtitle="Want lane-specific examples? Ask us. We share proof by request so every sample matches the buyer who needs to see it."
             align="center"
           />
           <div className="relative aspect-video rounded-2xl overflow-hidden border border-border bg-black red-glow">
@@ -390,7 +391,7 @@ function HomePage() {
                 <p className="font-display text-3xl text-primary mt-3">{item.price}</p>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{item.copy}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-foreground">
-                  View pricing <ArrowRight className="w-4 h-4" />
+                  {item.cta} <ArrowRight className="w-4 h-4" />
                 </span>
               </a>
             ))}
@@ -398,7 +399,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section id="process" className="scroll-mt-32 py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Process"
@@ -422,7 +423,7 @@ function HomePage() {
           <p className="timecode mb-4">READY WHEN YOU ARE</p>
           <Clapperboard className="mx-auto mb-6 h-10 w-10 text-primary" />
           <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.95] text-balance">
-            Ready to build the next film?
+            Tell us what you are building.
           </h2>
           <p className="mt-5 text-muted-foreground text-lg max-w-2xl mx-auto">
             Tell us the service lane, timing, location, and the result you need. We will shape the
