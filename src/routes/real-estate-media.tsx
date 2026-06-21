@@ -52,25 +52,25 @@ const DELIVERABLES = [
 export const Route = createFileRoute("/real-estate-media")({
   head: () => ({
     meta: [
-      { title: "Real Estate Video & Property Media in Rhode Island | Good Looks Media Group" },
+      { title: "Real Estate Video Rhode Island | Property Listing Media" },
       {
         name: "description",
         content:
-          "Real estate video and property media in Rhode Island for agents, builders, property owners, and rental hosts. Listing films, walkthroughs, agent branding clips, and social-ready reels.",
+          "Real estate video and property listing media in Rhode Island for agents, builders, and property owners. Listing videos, walkthrough footage, exterior coverage, social-ready edits, and fast turnaround.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Real Estate Video & Property Media in Rhode Island | Good Looks Media Group" },
+      { property: "og:title", content: "Real Estate Video Rhode Island | Property Listing Media" },
       {
         property: "og:description",
         content:
-          "Real estate video and property media in Rhode Island for agents, builders, property owners, and rental hosts.",
+          "Real estate video and property listing media in Rhode Island for agents, builders, and property owners.",
       },
       { property: "og:url", content: absoluteUrl("/real-estate-media") },
-      { name: "twitter:title", content: "Real Estate Video & Property Media in Rhode Island | Good Looks Media Group" },
+      { name: "twitter:title", content: "Real Estate Video Rhode Island | Property Listing Media" },
       {
         name: "twitter:description",
         content:
-          "Real estate video and property media in Rhode Island for agents, builders, property owners, and rental hosts.",
+          "Real estate video and property listing media in Rhode Island for agents, builders, and property owners.",
       },
     ],
     links: [
@@ -138,7 +138,7 @@ function RealEstateMediaPage() {
               data-track-event="cta_click_quote"
               data-service-lane="realEstate"
             >
-              Request Property Media Pricing
+              Book a Listing Shoot
             </Link>
             <a
               href="#real-estate-pricing"
@@ -245,7 +245,7 @@ function RealEstateMediaPage() {
             data-track-event="cta_click_quote"
             data-service-lane="realEstate"
           >
-            Request Property Media Pricing
+            Book a Listing Shoot
           </Link>
         </div>
       </section>
