@@ -9,12 +9,11 @@ export function PortfolioHiddenPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <p className="timecode mb-3">PORTFOLIO</p>
           <h1 className="font-display text-5xl md:text-7xl uppercase leading-[0.95] max-w-4xl">
-            Our full portfolio is being <span className="text-primary">curated.</span>
+            Watch the reel. Ask for <span className="text-primary">lane-specific proof.</span>
           </h1>
           <p className="mt-6 text-muted-foreground text-lg max-w-3xl leading-relaxed">
-            We are updating this section with approved portfolio samples that better match
-            the current service lanes. In the meantime, you can watch the director reel, compare
-            pricing, or request a project quote.
+            Watch the reel. It shows our range. Want lane-specific examples? Ask us. We share proof
+            by request so every sample matches the buyer who needs to see it.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
