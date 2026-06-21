@@ -16,24 +16,24 @@ import { absoluteUrl, pageJsonLd } from "@/data/seo";
 export const Route = createFileRoute("/packages")({
   head: () => ({
     meta: [
-      { title: "Video Pricing in Rhode Island | Good Looks Media Group" },
+      { title: "Video Production Pricing Rhode Island | GLMG" },
       {
         name: "description",
         content:
-          "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island. Final quotes depend on scope.",
+          "Video production pricing in Rhode Island for real estate listing video, business video, weddings, events, artist visuals, and editing. Custom quotes by scope.",
       },
-      { property: "og:title", content: "Video Pricing in Rhode Island | Good Looks Media Group" },
+      { property: "og:title", content: "Video Production Pricing Rhode Island | GLMG" },
       {
         property: "og:description",
         content:
-          "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island.",
+          "Starting investments and custom quotes for Rhode Island video production.",
       },
       { property: "og:url", content: absoluteUrl("/packages") },
-      { name: "twitter:title", content: "Video Pricing in Rhode Island | Good Looks Media Group" },
+      { name: "twitter:title", content: "Video Production Pricing Rhode Island | GLMG" },
       {
         name: "twitter:description",
         content:
-          "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island.",
+          "Starting investments and custom quotes for Rhode Island video production.",
       },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/packages") }],
@@ -42,9 +42,9 @@ export const Route = createFileRoute("/packages")({
         type: "application/ld+json",
         children: JSON.stringify(
           pageJsonLd({
-            name: "Video Pricing in Rhode Island",
+            name: "Video Production Pricing Rhode Island",
             description:
-              "Starting investments for business video, real estate media, weddings and events, and artist visuals in Rhode Island.",
+              "Video production pricing in Rhode Island for real estate, business, weddings, events, artist visuals, and editing.",
             path: "/packages",
           }),
         ),
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/packages")({
 const FAQ = [
   {
     q: "Are these fixed prices?",
-    a: "No. These are starting investments and anchor tiers. Final quotes depend on scope, coverage time, deliverables, travel, and the production approach.",
+    a: "No. These are starting investments and anchor tiers. Rush delivery, raw footage, extra revisions, additional formats, extended coverage, drone add-ons, and travel outside the standard service area may affect the final quote.",
   },
   {
     q: "Why are weddings and events grouped together here?",
@@ -114,22 +114,25 @@ function PackagesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-5">
           <div className="bg-card border border-primary/40 rounded-2xl p-7 md:p-10 grid md:grid-cols-[1fr_auto] gap-6 items-center red-glow">
             <div>
-              <p className="timecode mb-3">MAIN LANES</p>
+              <p className="timecode mb-3">FEATURED OFFER</p>
               <h2 className="font-display text-4xl uppercase leading-none">
-                Business, real estate, weddings & events, and artist visuals.
+                Real Estate Listing Video Package
               </h2>
               <p className="mt-4 text-muted-foreground max-w-3xl">
-                Use these starting points to understand scope. Final quotes depend on what the
-                video has to do after the shoot, not just what happens on the day.
+                Listing videos and property content for Rhode Island agents, builders, and property
+                owners. Designed to help listings stand out online with clean walkthrough footage,
+                exterior coverage, social-ready edits, and fast turnaround.
               </p>
+              <p className="mt-4 font-display text-3xl text-primary">Starting at $650</p>
             </div>
             <Link
               to="/contact"
+              search={{ projectType: "Real Estate Media" }}
               className="inline-flex justify-center bg-primary text-primary-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold"
               data-track-event="cta_click_quote"
-              data-service-lane="general"
+              data-service-lane="realEstate"
             >
-              Get a Project Quote
+              Book a Listing Shoot
             </Link>
           </div>
 
@@ -146,7 +149,7 @@ function PackagesPage() {
               to="/editing"
               className="inline-flex justify-center bg-primary text-primary-foreground px-6 py-3 rounded-md uppercase tracking-widest text-sm font-semibold"
             >
-              View Editing Packages
+              Send Your Footage for a Quote
             </Link>
           </div>
         </div>
@@ -160,7 +163,7 @@ function PackagesPage() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {BUSINESS_PACKAGES.map((pkg) => (
-              <PackageCard key={pkg.name} pkg={pkg} />
+              <PackageCard key={pkg.name} pkg={pkg} ctaLabel="Request a Custom Quote" />
             ))}
           </div>
         </div>
@@ -174,7 +177,7 @@ function PackagesPage() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {REAL_ESTATE_PACKAGES.map((pkg) => (
-              <PackageCard key={pkg.name} pkg={pkg} />
+              <PackageCard key={pkg.name} pkg={pkg} ctaLabel="Request a Custom Quote" />
             ))}
           </div>
         </div>
@@ -191,7 +194,7 @@ function PackagesPage() {
               <p className="timecode mb-4">WEDDING FILMS</p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {WEDDING_PACKAGES.map((pkg) => (
-                  <PackageCard key={pkg.name} pkg={pkg} />
+                  <PackageCard key={pkg.name} pkg={pkg} ctaLabel="Request a Custom Quote" />
                 ))}
               </div>
             </div>
@@ -199,7 +202,7 @@ function PackagesPage() {
               <p className="timecode mb-4">EVENT COVERAGE</p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {EVENT_PACKAGES.map((pkg) => (
-                  <PackageCard key={pkg.name} pkg={pkg} />
+                  <PackageCard key={pkg.name} pkg={pkg} ctaLabel="Request a Custom Quote" />
                 ))}
               </div>
             </div>
@@ -215,7 +218,7 @@ function PackagesPage() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {MUSIC_PACKAGES.map((pkg) => (
-              <PackageCard key={pkg.name} pkg={pkg} />
+              <PackageCard key={pkg.name} pkg={pkg} ctaLabel="Request a Custom Quote" />
             ))}
           </div>
         </div>
@@ -248,7 +251,7 @@ function PackagesPage() {
             data-track-event="cta_click_quote"
             data-service-lane="general"
           >
-            Get a Project Quote
+            Request a Custom Quote
           </Link>
         </div>
       </section>
