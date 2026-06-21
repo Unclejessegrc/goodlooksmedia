@@ -53,7 +53,7 @@ const CORE_LANES = [
     description:
       "The commercial lane for brand films, social campaigns, testimonials, launch videos, and trust-building content.",
     role: "Best for businesses that need clearer positioning and stronger buyer confidence.",
-    anchor: "$600 to $1,000",
+    anchor: "$1,200 to $1,800",
     href: "/business-video",
     packageHref: "/packages#business-video",
     quoteHref: "/contact?projectType=Business%20%26%20Brand%20Video",
@@ -65,7 +65,7 @@ const CORE_LANES = [
     description:
       "The growth lane for listing videos, agent branding, cinematic property walkthroughs, and short-form distribution.",
     role: "Best for agents, teams, and brokerages that want more than a commodity walkthrough vendor.",
-    anchor: "Starting at $450",
+    anchor: "Starting at $650",
     href: "/real-estate-media",
     packageHref: "/packages#real-estate-media",
     quoteHref: "/contact?projectType=Real%20Estate%20Media",
@@ -89,7 +89,7 @@ const CORE_LANES = [
     description:
       "A separate creative lane for music videos, release visuals, performance edits, and campaign-ready promo assets.",
     role: "Best for artists who need visuals tied to a release, not filler footage.",
-    anchor: "$600 to $900",
+    anchor: "$900 to $1,400",
     href: "/music-videos",
     packageHref: "/packages#artist-visuals",
     quoteHref: "/contact?projectType=Artist%20Visuals",
@@ -159,7 +159,13 @@ function ServicesPage() {
                     data-track-event="cta_click_quote"
                     data-service-lane={lane.serviceLane}
                   >
-                    Request a quote
+                    {lane.serviceLane === "realEstate"
+                      ? "Book a Listing Shoot"
+                      : lane.serviceLane === "wedding"
+                        ? "Check Availability for Your Date"
+                        : lane.serviceLane === "artist"
+                          ? "Pitch Your Track"
+                          : "Get a Project Quote"}
                   </a>
                 </div>
               </div>
@@ -206,7 +212,7 @@ function ServicesPage() {
                   data-track-event="cta_click_quote"
                   data-service-lane="editing"
                 >
-                  Request an editing quote
+                  Send Your Footage for a Quote
                 </a>
               </div>
             </div>
@@ -229,7 +235,7 @@ function ServicesPage() {
             data-track-event="cta_click_quote"
             data-service-lane="general"
           >
-            Start a quote <ArrowRight className="w-4 h-4" />
+            Send Your Project Details <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
