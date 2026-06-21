@@ -76,11 +76,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#231f20" },
-      { title: "Good Looks Media Group | Rhode Island Video Production Company" },
+      { title: "Video Production Warwick, RI | Good Looks Media Group" },
       {
         name: "description",
         content:
-          "Warwick, Rhode Island video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
+          "Good Looks Media Group is a Warwick, RI video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
       },
       { name: "author", content: SITE_NAME },
       { property: "og:site_name", content: SITE_NAME },
@@ -88,21 +88,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       {
         property: "og:title",
-        content: "Good Looks Media Group | Rhode Island Video Production Company",
+        content: "Video Production Warwick, RI | Good Looks Media Group",
       },
       {
         name: "twitter:title",
-        content: "Good Looks Media Group | Rhode Island Video Production Company",
+        content: "Video Production Warwick, RI | Good Looks Media Group",
       },
       {
         property: "og:description",
         content:
-          "Warwick, Rhode Island video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
+          "Good Looks Media Group is a Warwick, RI video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
       },
       {
         name: "twitter:description",
         content:
-          "Warwick, Rhode Island video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
+          "Good Looks Media Group is a Warwick, RI video production company for business video, real estate media, wedding films, event coverage, artist visuals, and editing support.",
       },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
