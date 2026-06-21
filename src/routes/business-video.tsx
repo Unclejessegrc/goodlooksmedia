@@ -9,24 +9,24 @@ import { absoluteUrl, pageJsonLd, serviceJsonLd } from "@/data/seo";
 export const Route = createFileRoute("/business-video")({
   head: () => ({
     meta: [
-      { title: "Business Video Production in Rhode Island | Good Looks Media Group" },
+      { title: "Commercial Video Production Rhode Island | GLMG" },
       {
         name: "description",
         content:
-          "Business video production in Rhode Island for websites, social media, ads, testimonials, and brand visibility. Strategic planning, filming, and editing built for real marketing use.",
+          "Commercial video production in Rhode Island for business websites, social media, ads, testimonials, and brand visibility. Strategy, filming, and editing by GLMG.",
       },
-      { property: "og:title", content: "Business Video Production in Rhode Island | Good Looks Media Group" },
+      { property: "og:title", content: "Commercial Video Production Rhode Island | GLMG" },
       {
         property: "og:description",
         content:
-          "Business video production in Rhode Island for websites, social media, ads, testimonials, and brand visibility.",
+          "Commercial video production in Rhode Island for websites, social media, ads, testimonials, and brand visibility.",
       },
       { property: "og:url", content: absoluteUrl("/business-video") },
-      { name: "twitter:title", content: "Business Video Production in Rhode Island | Good Looks Media Group" },
+      { name: "twitter:title", content: "Commercial Video Production Rhode Island | GLMG" },
       {
         name: "twitter:description",
         content:
-          "Business video production in Rhode Island for websites, social media, ads, testimonials, and brand visibility.",
+          "Commercial video production in Rhode Island for websites, social media, ads, testimonials, and brand visibility.",
       },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/business-video") }],
