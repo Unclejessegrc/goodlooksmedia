@@ -41,7 +41,7 @@ export function PortfolioHiddenPage() {
               data-track-event="cta_click_quote"
               data-service-lane="general"
             >
-              Request a Quote <ArrowRight className="w-4 h-4" />
+              Get a Project Quote <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
