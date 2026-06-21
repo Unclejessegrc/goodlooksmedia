@@ -19,7 +19,17 @@ export interface PackageData {
   featured?: boolean;
 }
 
-export function PackageCard({ pkg }: { pkg: PackageData }) {
+const CTA_BY_LANE: Record<NonNullable<PackageData["serviceLane"]>, string> = {
+  business: "Get a Project Quote",
+  realEstate: "Book a Listing Shoot",
+  wedding: "Check Availability for Your Date",
+  event: "Request a Custom Quote",
+  artist: "Pitch Your Track",
+  editing: "Send Your Footage for a Quote",
+  custom: "Request a Custom Quote",
+};
+
+export function PackageCard({ pkg, ctaLabel }: { pkg: PackageData; ctaLabel?: string }) {
   const params = new URLSearchParams({
     projectType: pkg.contactProjectType ?? pkg.category,
     package: pkg.name,
@@ -62,7 +72,7 @@ export function PackageCard({ pkg }: { pkg: PackageData }) {
         data-service-lane={pkg.serviceLane ?? pkg.category.toLowerCase()}
         data-package-name={pkg.name}
       >
-        Request a Quote
+        {ctaLabel ?? CTA_BY_LANE[pkg.serviceLane ?? "custom"]}
       </a>
     </div>
   );
