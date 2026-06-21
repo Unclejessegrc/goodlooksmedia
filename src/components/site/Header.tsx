@@ -64,7 +64,7 @@ export function Header() {
             data-track-event="cta_click_quote"
             data-service-lane="general"
           >
-            Get a Quote
+            Get a Project Quote
           </Link>
         </div>
 
@@ -105,7 +105,7 @@ export function Header() {
               data-track-event="cta_click_quote"
               data-service-lane="general"
             >
-              Get a Quote
+              Get a Project Quote
             </Link>
           </nav>
         </div>
