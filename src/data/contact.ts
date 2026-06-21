@@ -1,6 +1,6 @@
 export const CONTACT = {
   phoneDisplay: "401-465-1529",
-  textResponseNote: "Fast replies, usually same day.",
+  textResponseNote: "Send your project details. Typical response time: under 24 hours.",
   telHref: "tel:4014651529",
   smsHref: "sms:4014651529",
   email: "goodlooksmediagroup@gmail.com",
