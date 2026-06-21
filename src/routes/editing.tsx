@@ -9,24 +9,24 @@ import { absoluteUrl, pageJsonLd, serviceJsonLd } from "@/data/seo";
 export const Route = createFileRoute("/editing")({
   head: () => ({
     meta: [
-      { title: "Video Editing Services | Good Looks Media Group" },
+      { title: "Video Editing Service Rhode Island | GLMG" },
       {
         name: "description",
         content:
-          "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
+          "Video editing service in Rhode Island for client-shot footage, reels, promos, event recaps, artist visuals, business content, and wedding highlights.",
       },
-      { property: "og:title", content: "Video Editing Services | Good Looks Media Group" },
+      { property: "og:title", content: "Video Editing Service Rhode Island | GLMG" },
       {
         property: "og:description",
         content:
-          "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
+          "Video editing service in Rhode Island for client-shot footage, reels, promos, event recaps, artist visuals, business content, and wedding highlights.",
       },
       { property: "og:url", content: absoluteUrl("/editing") },
-      { name: "twitter:title", content: "Video Editing Services | Good Looks Media Group" },
+      { name: "twitter:title", content: "Video Editing Service Rhode Island | GLMG" },
       {
         name: "twitter:description",
         content:
-          "Editing-only support for reels, promos, event recaps, artist visuals, business content, and wedding highlights in Rhode Island.",
+          "Video editing service in Rhode Island for client-shot footage, reels, promos, event recaps, artist visuals, business content, and wedding highlights.",
       },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/editing") }],
@@ -122,7 +122,7 @@ function EditingPage() {
               data-track-event="cta_click_quote"
               data-service-lane="editing"
             >
-              Get an Editing Quote
+              Send Your Footage for a Quote
             </a>
             <a
               href={QUOTE_LINK}
@@ -130,7 +130,7 @@ function EditingPage() {
               data-track-event="cta_click_quote"
               data-service-lane="editing"
             >
-              Send Footage Details
+              Send Your Footage for a Quote
             </a>
           </div>
         </div>
@@ -178,6 +178,10 @@ function EditingPage() {
             complexity, revision needs, turnaround time, and number of aspect ratios or
             deliverables requested.
           </p>
+          <p className="mt-3 text-sm text-muted-foreground max-w-4xl">
+            Rush delivery, raw footage, extra revisions, additional formats, extended coverage,
+            drone add-ons, and travel outside the standard service area may affect the final quote.
+          </p>
         </div>
       </section>
 
@@ -210,7 +214,7 @@ function EditingPage() {
             data-track-event="cta_click_quote"
             data-service-lane="editing"
           >
-            Get an Editing Quote <ArrowRight className="w-4 h-4" />
+            Send Your Footage for a Quote <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </section>
