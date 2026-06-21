@@ -447,6 +447,7 @@ export default function InvoiceGenerator() {
                 <div><label className={label}>Tax Rate %</label><input className={input} type="number" value={taxRateInput} onChange={(e) => setTaxRateInput(e.target.value)} /></div>
                 <div><label className={label}>Total Due</label><div className="rounded-md bg-slate-900 px-3 py-2 text-sm font-semibold text-white">{usd(totalDue)}</div></div>
                 <div className="col-span-2"><label className={label}>Notes / Payment Terms</label><textarea className={input + " resize-none"} rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} /></div>
+              </div>
               {savings > 0 && <p className="mt-2 text-xs text-emerald-700">This invoice shows the client saving {usd(savings)} off the total value.</p>}
               <div className="mt-3 flex items-start gap-2 text-xs text-slate-500">
                 <Info size={14} className="mt-0.5 shrink-0" />
