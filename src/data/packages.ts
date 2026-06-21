@@ -5,9 +5,9 @@ export const EVENT_PACKAGES: PackageData[] = [
     category: "Events",
     contactProjectType: "Event Coverage",
     serviceLane: "event",
-    name: "Quick Recap",
-    price: "$400 to $700",
-    priceLabel: "Introductory starting range",
+    name: "Event Essentials",
+    price: "$800 to $1,200",
+    priceLabel: "Starting investment",
     bestFor:
       "Best for small parties, pop-ups, birthdays, baby showers, short events, and basic social recap needs.",
     includes: [
@@ -23,8 +23,8 @@ export const EVENT_PACKAGES: PackageData[] = [
     contactProjectType: "Event Coverage",
     serviceLane: "event",
     name: "Main Event",
-    price: "$900 to $1,500",
-    priceLabel: "Introductory starting range",
+    price: "$1,400 to $2,000",
+    priceLabel: "Starting investment",
     featured: true,
     bestFor:
       "Best fit for most clients. Built for larger parties, live shows, community events, milestone events, and social-ready recaps.",
@@ -43,8 +43,8 @@ export const EVENT_PACKAGES: PackageData[] = [
     contactProjectType: "Event Coverage",
     serviceLane: "event",
     name: "Full Story",
-    price: "$1,800 to $2,400+",
-    priceLabel: "Introductory starting range",
+    price: "$2,200 to $3,200",
+    priceLabel: "Starting investment",
     bestFor:
       "Best for bigger events, full live-show coverage, multi-camera needs, extended edits, festivals, and larger productions.",
     includes: [
@@ -64,9 +64,9 @@ export const MUSIC_PACKAGES: PackageData[] = [
     category: "Artist Video",
     contactProjectType: "Artist Visuals",
     serviceLane: "artist",
-    name: "Single Take",
-    price: "$600 to $900",
-    priceLabel: "Introductory starting range",
+    name: "Performance Film",
+    price: "$900 to $1,400",
+    priceLabel: "Starting investment",
     bestFor: "Best for one location, one song, clean performance video.",
     includes: [
       "One location",
@@ -82,8 +82,8 @@ export const MUSIC_PACKAGES: PackageData[] = [
     contactProjectType: "Artist Visuals",
     serviceLane: "artist",
     name: "Visual Story",
-    price: "$1,200 to $2,000",
-    priceLabel: "Introductory starting range",
+    price: "$1,600 to $2,400",
+    priceLabel: "Starting investment",
     featured: true,
     bestFor:
       "Best for artists who want a stronger concept with multiple setups or simple narrative elements.",
@@ -101,8 +101,8 @@ export const MUSIC_PACKAGES: PackageData[] = [
     contactProjectType: "Artist Visuals",
     serviceLane: "artist",
     name: "Campaign Kit",
-    price: "$2,200 to $3,500",
-    priceLabel: "Introductory starting range",
+    price: "$2,400 to $3,800",
+    priceLabel: "Starting investment",
     bestFor: "Best for artists preparing a release campaign.",
     includes: [
       "Full music video",
@@ -122,7 +122,7 @@ export const WEDDING_PACKAGES: PackageData[] = [
     serviceLane: "wedding",
     name: "Teaser",
     price: "$1,200 to $1,800",
-    priceLabel: "Introductory starting range",
+    priceLabel: "Starting investment",
     bestFor:
       "Best for small weddings, elopements, and couples who want a short cinematic keepsake.",
     includes: [
@@ -139,8 +139,8 @@ export const WEDDING_PACKAGES: PackageData[] = [
     contactProjectType: "Wedding Film",
     serviceLane: "wedding",
     name: "Highlight",
-    price: "$2,000 to $2,800",
-    priceLabel: "Introductory starting range",
+    price: "$2,400 to $3,200",
+    priceLabel: "Starting investment",
     featured: true,
     bestFor:
       "Best fit for most couples. A polished highlight film with the emotion and key moments of the day.",
@@ -158,8 +158,8 @@ export const WEDDING_PACKAGES: PackageData[] = [
     contactProjectType: "Wedding Film",
     serviceLane: "wedding",
     name: "Full Story",
-    price: "$3,200 to $4,500",
-    priceLabel: "Introductory starting range",
+    price: "$3,800 to $5,000",
+    priceLabel: "Starting investment",
     bestFor:
       "Best for larger weddings, fuller coverage, extended edits, and couples who want more of the day preserved.",
     includes: [
@@ -178,9 +178,9 @@ export const BUSINESS_PACKAGES: PackageData[] = [
     category: "Business",
     contactProjectType: "Business & Brand Video",
     serviceLane: "business",
-    name: "Social Starter",
-    price: "$600 to $1,000",
-    priceLabel: "Introductory starting range",
+    name: "Brand Foundation",
+    price: "$1,200 to $1,800",
+    priceLabel: "Starting investment",
     bestFor:
       "Best for small businesses that need short-form video, reels, or simple promo content.",
     includes: [
@@ -198,7 +198,7 @@ export const BUSINESS_PACKAGES: PackageData[] = [
     serviceLane: "business",
     name: "Brand Builder",
     price: "$1,200 to $2,200",
-    priceLabel: "Introductory starting range",
+    priceLabel: "Starting investment",
     featured: true,
     bestFor:
       "Best fit for most businesses. Built around a core website video, testimonial, or brand story with short social cutdowns.",
@@ -217,7 +217,7 @@ export const BUSINESS_PACKAGES: PackageData[] = [
     serviceLane: "business",
     name: "Campaign Kit",
     price: "$2,800 to $4,500",
-    priceLabel: "Introductory starting range",
+    priceLabel: "Starting investment",
     bestFor:
       "Best for businesses that need a content library, campaign assets, multiple edits, or ongoing marketing use.",
     includes: [
@@ -236,9 +236,9 @@ export const REAL_ESTATE_PACKAGES: PackageData[] = [
     category: "Real Estate Media",
     contactProjectType: "Real Estate Media",
     serviceLane: "realEstate",
-    name: "Social Discovery",
-    price: "Starting at $450",
-    priceLabel: "Fast-turn launch",
+    name: "Property Showcase",
+    price: "Starting at $650",
+    priceLabel: "Starting investment",
     bestFor:
       "Best for agents who need a fast property-first video package for Reels, listing pages, and a clean launch post.",
     includes: [
@@ -295,8 +295,8 @@ export const EDITING_PACKAGES: PackageData[] = [
     contactProjectType: "Editing Only",
     serviceLane: "editing",
     name: "Quick Cut",
-    price: "$175",
-    priceLabel: "Starting at",
+    price: "Quoted by scope",
+    priceLabel: "Custom quote",
     bestFor: "Best for one simple short-form edit from footage you already have.",
     includes: [
       "One short edit up to 60 seconds",
@@ -312,8 +312,8 @@ export const EDITING_PACKAGES: PackageData[] = [
     contactProjectType: "Editing Only",
     serviceLane: "editing",
     name: "Polished Edit",
-    price: "$450",
-    priceLabel: "Starting at",
+    price: "Quoted by scope",
+    priceLabel: "Custom quote",
     bestFor: "Best for one stronger promo, recap, talking-head video, or social-ready edit.",
     includes: [
       "One polished client-shot video",
@@ -328,8 +328,8 @@ export const EDITING_PACKAGES: PackageData[] = [
     contactProjectType: "Editing Only",
     serviceLane: "editing",
     name: "Full Edit",
-    price: "$650",
-    priceLabel: "Starting at",
+    price: "Quoted by scope",
+    priceLabel: "Custom quote",
     bestFor: "Best for music videos, wedding highlights, longer recaps, YouTube, or interview-style edits.",
     includes: [
       "One fuller edit from organized footage",
@@ -361,7 +361,7 @@ export const CUSTOM_PACKAGES: PackageData[] = [
     contactProjectType: "Custom Project",
     serviceLane: "custom",
     name: "Custom Projects",
-    price: "Starting at $400+",
+    price: "Quoted by scope",
     priceLabel: "Custom quote",
     bestFor:
       "Best for documentaries, family stories, personal projects, reels, and unusual ideas that need a custom scope.",
