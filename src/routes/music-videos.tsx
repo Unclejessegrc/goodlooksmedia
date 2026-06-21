@@ -11,17 +11,17 @@ import { absoluteUrl, pageJsonLd, serviceJsonLd, videoObjectJsonLd } from "@/dat
 export const Route = createFileRoute("/music-videos")({
   head: () => ({
     meta: [
-      { title: "Artist Visuals & Music Video Production | Good Looks Media Group" },
+      { title: "Music Video Production Rhode Island | GLMG" },
       {
         name: "description",
         content:
-          "Artist visuals and music video production in Rhode Island for music videos, performance visuals, promo clips, and release-ready campaign assets.",
+          "Music video production in Rhode Island for music videos, release promos, performance films, and social clips for artists who need visuals that travel.",
       },
-      { property: "og:title", content: "Artist Visuals & Music Video Production | Good Looks Media Group" },
+      { property: "og:title", content: "Music Video Production Rhode Island | GLMG" },
       {
         property: "og:description",
         content:
-          "Artist visuals and music video production in Rhode Island for music videos, performance visuals, promo clips, and release-ready campaign assets.",
+          "Music video production in Rhode Island for music videos, release promos, performance films, and social clips.",
       },
       { property: "og:url", content: absoluteUrl("/music-videos") },
     ],
@@ -102,7 +102,7 @@ function MusicPage() {
               data-track-event="cta_click_quote"
               data-service-lane="artist"
             >
-              Start a Creative Project
+              Pitch Your Track
             </Link>
             <a
               href="#artist-pricing"
@@ -218,7 +218,7 @@ function MusicPage() {
               data-track-event="cta_click_quote"
               data-service-lane="artist"
             >
-              Start a Creative Project <ArrowRight className="w-4 h-4" />
+              Pitch Your Track <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
