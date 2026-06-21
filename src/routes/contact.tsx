@@ -27,24 +27,24 @@ export const Route = createFileRoute("/contact")({
   }),
   head: () => ({
     meta: [
-      { title: "Request a Quote | Good Looks Media Group" },
+      { title: "Contact GLMG | Video Production Warwick, RI" },
       {
         name: "description",
         content:
-          "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
+          "Contact Good Looks Media Group in Warwick, RI for business video, real estate media, wedding films, event coverage, artist visuals, or editing.",
       },
-      { property: "og:title", content: "Request a Quote | Good Looks Media Group" },
+      { property: "og:title", content: "Contact GLMG | Video Production Warwick, RI" },
       {
         property: "og:description",
         content:
-          "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
+          "Contact Good Looks Media Group in Warwick, RI for Rhode Island video production.",
       },
       { property: "og:url", content: absoluteUrl("/contact") },
-      { name: "twitter:title", content: "Request a Quote | Good Looks Media Group" },
+      { name: "twitter:title", content: "Contact GLMG | Video Production Warwick, RI" },
       {
         name: "twitter:description",
         content:
-          "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
+          "Contact Good Looks Media Group in Warwick, RI for Rhode Island video production.",
       },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/contact") }],
@@ -53,9 +53,9 @@ export const Route = createFileRoute("/contact")({
         type: "application/ld+json",
         children: JSON.stringify(
           pageJsonLd({
-            name: "Request a Quote",
+            name: "Contact GLMG",
             description:
-              "Request a quote for business video, real estate media, wedding films, event coverage, artist visuals, or editing in Rhode Island.",
+              "Contact Good Looks Media Group in Warwick, RI for Rhode Island video production.",
             path: "/contact",
           }),
         ),
@@ -76,8 +76,8 @@ const PROJECT_TYPES = [
 ] as const;
 
 const BUDGETS = [
-  "Under $500",
-  "$500 to $1,500",
+  "Need guidance on scope",
+  "$800 to $1,500",
   "$1,500 to $3,500",
   "$3,500 to $6,000",
   "$6,000+",
@@ -409,7 +409,7 @@ function ContactPage() {
                 disabled={status === "submitting"}
                 className="bg-primary text-primary-foreground px-7 py-4 rounded-md uppercase tracking-widest text-sm font-semibold hover:opacity-90 red-glow"
               >
-                {status === "submitting" ? "Sending..." : "Request a Quote"}
+                {status === "submitting" ? "Sending..." : "Send Your Project Details"}
               </button>
             </form>
 
