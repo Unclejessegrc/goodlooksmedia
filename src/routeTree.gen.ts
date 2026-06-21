@@ -16,6 +16,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RealEstateMediaRouteImport } from './routes/real-estate-media'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as MusicVideosRouteImport } from './routes/music-videos'
 import { Route as ForBusinessesRouteImport } from './routes/for-businesses'
@@ -59,6 +60,11 @@ const RealEstateMediaRoute = RealEstateMediaRouteImport.update({
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PackagesRoute = PackagesRouteImport.update({
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/for-businesses': typeof ForBusinessesRoute
   '/music-videos': typeof MusicVideosRoute
   '/packages': typeof PackagesRoute
+  '/portal': typeof PortalRoute
   '/portfolio': typeof PortfolioRoute
   '/real-estate-media': typeof RealEstateMediaRoute
   '/services': typeof ServicesRoute
@@ -135,6 +142,7 @@ export interface FileRoutesByTo {
   '/for-businesses': typeof ForBusinessesRoute
   '/music-videos': typeof MusicVideosRoute
   '/packages': typeof PackagesRoute
+  '/portal': typeof PortalRoute
   '/portfolio': typeof PortfolioRoute
   '/real-estate-media': typeof RealEstateMediaRoute
   '/services': typeof ServicesRoute
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/for-businesses': typeof ForBusinessesRoute
   '/music-videos': typeof MusicVideosRoute
   '/packages': typeof PackagesRoute
+  '/portal': typeof PortalRoute
   '/portfolio': typeof PortfolioRoute
   '/real-estate-media': typeof RealEstateMediaRoute
   '/services': typeof ServicesRoute
@@ -174,6 +183,7 @@ export interface FileRouteTypes {
     | '/for-businesses'
     | '/music-videos'
     | '/packages'
+    | '/portal'
     | '/portfolio'
     | '/real-estate-media'
     | '/services'
@@ -192,6 +202,7 @@ export interface FileRouteTypes {
     | '/for-businesses'
     | '/music-videos'
     | '/packages'
+    | '/portal'
     | '/portfolio'
     | '/real-estate-media'
     | '/services'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/for-businesses'
     | '/music-videos'
     | '/packages'
+    | '/portal'
     | '/portfolio'
     | '/real-estate-media'
     | '/services'
@@ -226,16 +238,17 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EditingRoute: typeof EditingRoute
   EventsRecapsRoute: typeof EventsRecapsRoute
-  ForBusinessesRoute: typeof ForBusinessesRoute
-  MusicVideosRoute: typeof MusicVideosRoute
-  PackagesRoute: typeof PackagesRoute
-  PortfolioRoute: typeof PortfolioRoute
-  RealEstateMediaRoute: typeof RealEstateMediaRoute
-  ServicesRoute: typeof ServicesRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  VideoEditingRoute: typeof VideoEditingRoute
-  WeddingsRoute: typeof WeddingsRoute
-  WorkRoute: typeof WorkRoute
+  ForBusinessesRoute: ForBusinessesRoute,
+  MusicVideosRoute: MusicVideosRoute,
+  PackagesRoute: PackagesRoute,
+  PortalRoute: PortalRoute,
+  PortfolioRoute: PortfolioRoute,
+  RealEstateMediaRoute: RealEstateMediaRoute,
+  ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VideoEditingRoute: VideoEditingRoute,
+  WeddingsRoute: WeddingsRoute,
+  WorkRoute: WorkRoute,
 }
 
 declare module '@tanstack/react-router' {
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/packages': {
@@ -365,6 +385,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForBusinessesRoute: ForBusinessesRoute,
   MusicVideosRoute: MusicVideosRoute,
   PackagesRoute: PackagesRoute,
+  PortalRoute: PortalRoute,
   PortfolioRoute: PortfolioRoute,
   RealEstateMediaRoute: RealEstateMediaRoute,
   ServicesRoute: ServicesRoute,

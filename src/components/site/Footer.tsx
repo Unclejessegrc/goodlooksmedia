@@ -143,7 +143,12 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between gap-2 text-xs text-muted-foreground">
           <p>(c) {year} Good Looks Media Group - Warwick, Rhode Island video production</p>
-          <p className="timecode">REC - 00:00:{String(year % 100).padStart(2, "0")}:18</p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <Link to="/portal" className="hover:text-primary">
+              Business Login
+            </Link>
+            <p className="timecode">REC - 00:00:{String(year % 100).padStart(2, "0")}:18</p>
+          </div>
         </div>
       </div>
     </footer>
