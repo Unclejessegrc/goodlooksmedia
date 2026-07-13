@@ -238,17 +238,17 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EditingRoute: typeof EditingRoute
   EventsRecapsRoute: typeof EventsRecapsRoute
-  ForBusinessesRoute: ForBusinessesRoute,
-  MusicVideosRoute: MusicVideosRoute,
-  PackagesRoute: PackagesRoute,
-  PortalRoute: PortalRoute,
-  PortfolioRoute: PortfolioRoute,
-  RealEstateMediaRoute: RealEstateMediaRoute,
-  ServicesRoute: ServicesRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
-  VideoEditingRoute: VideoEditingRoute,
-  WeddingsRoute: WeddingsRoute,
-  WorkRoute: WorkRoute,
+  ForBusinessesRoute: typeof ForBusinessesRoute
+  MusicVideosRoute: typeof MusicVideosRoute
+  PackagesRoute: typeof PackagesRoute
+  PortalRoute: typeof PortalRoute
+  PortfolioRoute: typeof PortfolioRoute
+  RealEstateMediaRoute: typeof RealEstateMediaRoute
+  ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VideoEditingRoute: typeof VideoEditingRoute
+  WeddingsRoute: typeof WeddingsRoute
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
