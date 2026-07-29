@@ -52,7 +52,7 @@ export function businessJsonLd() {
     logo: OG_IMAGE,
     description:
       "Good Looks Media Group is a Warwick, Rhode Island video marketing and production company serving Rhode Island and nearby New England with business video, real estate media, wedding films, event recaps, and artist visuals.",
-    telephone: "+1-401-465-1529",
+    telephone: "+1-401-895-6365",
     email: CONTACT.email,
     priceRange: "$$",
     foundingDate: "2018",
@@ -66,7 +66,7 @@ export function businessJsonLd() {
     sameAs: [CONTACT.instagramUrl, CONTACT.youtubeUrl],
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-401-465-1529",
+      telephone: "+1-401-895-6365",
       email: CONTACT.email,
       contactType: "customer service",
       areaServed: ["US-RI", "US-CT", "US-MA"],
