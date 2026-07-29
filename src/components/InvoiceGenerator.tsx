@@ -236,8 +236,8 @@ export default function InvoiceGenerator() {
     name: "Good Looks Media Group",
     tagline: "Strategic Rhode Island Video Production",
     address: "Warwick, Rhode Island",
-    email: "info@goodlooksmedia.com",
-    phone: "401-465-1529",
+    email: "goodlooksmediagroup@gmail.com",
+    phone: "401-895-6365",
     logo: glmgLogo,
   });
   const handleLogo = (e: ChangeEvent<HTMLInputElement>) => {
@@ -360,7 +360,7 @@ export default function InvoiceGenerator() {
                 <div className="col-span-2"><label className={label}>Business Name</label><input className={input} value={biz.name} onChange={(e) => setBiz({ ...biz, name: e.target.value })} /></div>
                 <div className="col-span-2"><label className={label}>Tagline</label><input className={input} value={biz.tagline} onChange={(e) => setBiz({ ...biz, tagline: e.target.value })} /></div>
                 <div className="col-span-2"><label className={label}>Address</label><input className={input} value={biz.address} onChange={(e) => setBiz({ ...biz, address: e.target.value })} /></div>
-                <div><label className={label}>Email</label><select className={input} value={biz.email} onChange={(e) => setBiz({ ...biz, email: e.target.value })}><option value="info@goodlooksmedia.com">info@goodlooksmedia.com</option></select></div>
+                <div><label className={label}>Email</label><select className={input} value={biz.email} onChange={(e) => setBiz({ ...biz, email: e.target.value })}><option value="goodlooksmediagroup@gmail.com">goodlooksmediagroup@gmail.com</option></select></div>
                 <div><label className={label}>Phone</label><input className={input} value={biz.phone} onChange={(e) => setBiz({ ...biz, phone: e.target.value })} /></div>
               </div>
             </div>
